@@ -8,11 +8,11 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 0
+  defaultScreenOrientation: 3
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: Hoyoverse
   productName: Laser Tag
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -135,7 +135,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 10.9.3
+  bundleVersion: 1.0.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -903,7 +903,7 @@ PlayerSettings:
   metroSplashScreenUseBackgroundColor: 1
   platformCapabilities:
     WindowsStoreApps:
-      CodeGeneration: False
+      EnterpriseAuthentication: False
       OfflineMapsManagement: False
       HumanInterfaceDevice: False
       Location: False
@@ -938,8 +938,8 @@ PlayerSettings:
       Contacts: False
       Proximity: False
       InternetClient: True
+      CodeGeneration: False
       BackgroundMediaPlayback: False
-      EnterpriseAuthentication: False
   metroTargetDeviceFamilies:
     Desktop: False
     Holographic: False

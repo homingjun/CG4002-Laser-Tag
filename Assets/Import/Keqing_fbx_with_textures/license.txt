@@ -1,0 +1,11 @@
+Model Information:
+* title:	Keqing fbx with textures
+* source:	https://sketchfab.com/3d-models/keqing-fbx-with-textures-25b8e7745ffe423aa2a01f5cee398373
+* author:	_INSTICT_ (https://sketchfab.com/_INSTICT_)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Keqing fbx with textures" (https://sketchfab.com/3d-models/keqing-fbx-with-textures-25b8e7745ffe423aa2a01f5cee398373) by _INSTICT_ (https://sketchfab.com/_INSTICT_) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
