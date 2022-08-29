@@ -6,16 +6,16 @@ using TMPro;
 public class GrenadeManager : MonoBehaviour
 {
     public TMP_Text textGrenade;
-    public int grenade = 3;
+    public int numGrenades = 3;
     // Start is called before the first frame update
     void Start()
     {
-        textGrenade.text = grenade.ToString();
+        textGrenade.text = numGrenades.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        textGrenade.text = grenade.ToString();
+        textGrenade.text = numGrenades.ToString();
     }
 }
