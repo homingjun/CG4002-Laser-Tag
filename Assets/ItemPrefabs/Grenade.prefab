@@ -27,8 +27,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2295132077347308193}
-  m_LocalRotation: {x: 0.17997049, y: -0.19285864, z: 0.055290088, w: 0.9629949}
-  m_LocalPosition: {x: 0, y: 1.21, z: 5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.21, z: -10}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -37,7 +37,7 @@ Transform:
   - {fileID: 2295132077347282567}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 21.589, y: -22.214, z: 2.285}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2295132077340062049
 Animator:
   serializedVersion: 4
@@ -105,7 +105,7 @@ MonoBehaviour:
   force: 300
   explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
-  hasThrown: 0
+  hasThrown: 1
 --- !u!1 &2295132077347308195
 GameObject:
   m_ObjectHideFlags: 0
