@@ -13,7 +13,7 @@ public class GrenadeThrower : MonoBehaviour
     void Update()
     {
         clicked = GameObject.Find("Button Grenade").GetComponent<GrenadeButton>();
-        Debug.Log(clicked.isClicked);
+        //Debug.Log(clicked.isClicked);
         if (clicked.isClicked)
         {
             ThrowGrenade();
