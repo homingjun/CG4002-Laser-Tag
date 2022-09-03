@@ -19,6 +19,5 @@ public class ShieldManager : MonoBehaviour
     void Update()
     {
         textShield.text = shieldHP.ToString();
-        textShield.text = shieldTimer.ToString();
     }
 }
