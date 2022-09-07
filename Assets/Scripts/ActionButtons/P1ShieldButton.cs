@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ShieldButton : MonoBehaviour
+public class P1ShieldButton : MonoBehaviour
 {
     private ShieldManager shieldManagerHP;
     private ShieldManager shieldManagerTimer;
     private TextMeshProUGUI shieldManagerTimerStatus;
+    private ShieldManager shieldManagerPlayerOneShieldStatus;
     private MeshRenderer meshStatus;
     private CircleCollider2D colliderStatus;
     private bool timerStatus = false;
@@ -17,12 +18,13 @@ public class ShieldButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Button btn = GameObject.Find("Button Shield").GetComponent<Button>();
+        Button btn = GameObject.Find("Button Shield P1").GetComponent<Button>();
         shieldManagerHP = GameObject.Find("Text Shield").GetComponent<ShieldManager>();
         shieldManagerTimer = GameObject.Find("Text Shield Timer").GetComponent<ShieldManager>();
         shieldManagerTimerStatus = GameObject.Find("Text Shield Timer").GetComponent<TextMeshProUGUI>();
-        meshStatus = GameObject.Find("First Person Shield").GetComponent<MeshRenderer>();
-        colliderStatus = GameObject.Find("First Person Shield").GetComponent<CircleCollider2D>();
+        shieldManagerPlayerOneShieldStatus = GameObject.Find("ImageTarget").GetComponent<ShieldManager>();
+        meshStatus = GameObject.Find("First Person Shield P1").GetComponent<MeshRenderer>();
+        colliderStatus = GameObject.Find("First Person Shield P1").GetComponent<CircleCollider2D>();
         btn.onClick.AddListener(TaskOnClick);
     }
 
@@ -30,6 +32,7 @@ public class ShieldButton : MonoBehaviour
     void TaskOnClick()
     {
         timerStatus = true;
+        shieldManagerPlayerOneShieldStatus.playerOneShieldStatus = true;
         shieldManagerTimerStatus.enabled = true;
         shieldManagerHP.shieldHP = 30;
         meshStatus.enabled = true;
@@ -61,6 +64,7 @@ public class ShieldButton : MonoBehaviour
         colliderStatus.enabled = false;
         shieldManagerHP.shieldHP = 0;
         shieldManagerTimerStatus.enabled = false;
+        shieldManagerPlayerOneShieldStatus.playerOneShieldStatus = false;
         timeLeft = 10f;
     }
 
