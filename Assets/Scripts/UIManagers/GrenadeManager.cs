@@ -6,7 +6,7 @@ using TMPro;
 public class GrenadeManager : MonoBehaviour
 {
     public TMP_Text textGrenade;
-    public int numGrenades = 3;
+    public int numGrenades = 2;
     // Start is called before the first frame update
     void Start()
     {

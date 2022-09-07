@@ -21,6 +21,8 @@ public class ShieldButton : MonoBehaviour
         shieldManagerHP = GameObject.Find("Text Shield").GetComponent<ShieldManager>();
         shieldManagerTimer = GameObject.Find("Text Shield Timer").GetComponent<ShieldManager>();
         shieldManagerTimerStatus = GameObject.Find("Text Shield Timer").GetComponent<TextMeshProUGUI>();
+        meshStatus = GameObject.Find("First Person Shield").GetComponent<MeshRenderer>();
+        colliderStatus = GameObject.Find("First Person Shield").GetComponent<CircleCollider2D>();
         btn.onClick.AddListener(TaskOnClick);
     }
 
@@ -30,8 +32,6 @@ public class ShieldButton : MonoBehaviour
         timerStatus = true;
         shieldManagerTimerStatus.enabled = true;
         shieldManagerHP.shieldHP = 30;
-        meshStatus = GameObject.Find("First Person Shield").GetComponent<MeshRenderer>();
-        colliderStatus = GameObject.Find("First Person Shield").GetComponent<CircleCollider2D>();
         meshStatus.enabled = true;
         colliderStatus.enabled = true;
     }
@@ -61,6 +61,7 @@ public class ShieldButton : MonoBehaviour
         colliderStatus.enabled = false;
         shieldManagerHP.shieldHP = 0;
         shieldManagerTimerStatus.enabled = false;
+        timeLeft = 10f;
     }
 
 
