@@ -39,6 +39,7 @@ public class ShieldManager : MonoBehaviour
 
     public bool playerOneShieldStatus = false;
     public bool playerTwoShieldStatus = false;
+    public bool playerFound = false;
 
     protected virtual void Start()
     {
@@ -157,7 +158,8 @@ public class ShieldManager : MonoBehaviour
 
     protected virtual void OnTrackingFound()
     {
-        if (mObserverBehaviour)
+        playerFound = true;
+        if (mObserverBehaviour && playerTwoShieldStatus)
         {
             var rendererComponents = mObserverBehaviour.GetComponentsInChildren<Renderer>(true);
             var colliderComponents = mObserverBehaviour.GetComponentsInChildren<Collider>(true);
@@ -169,16 +171,18 @@ public class ShieldManager : MonoBehaviour
 
             // Enable colliders:
             foreach (var component in colliderComponents)
-                component.enabled = true;
+                component.enabled = false;
 
             // Enable canvas':
             foreach (var component in canvasComponents)
                 component.enabled = true;
         }
+
     }
 
     protected virtual void OnTrackingLost()
     {
+        playerFound = false;
         if (mObserverBehaviour)
         {
             var rendererComponents = mObserverBehaviour.GetComponentsInChildren<Renderer>(true);

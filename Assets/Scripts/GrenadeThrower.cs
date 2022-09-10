@@ -4,28 +4,49 @@ using UnityEngine;
 
 public class GrenadeThrower : MonoBehaviour
 {
+    public Transform cam;
+    public Transform imageTarget;
     public float throwForce = 40f;
     public GameObject grenadePrefab;
-    private GrenadeButton clicked;
+    private P1GrenadeButton grenadeButtonPlayerOne;
+    private P2GrenadeButton grenadeButtonPlayerTwo;
 
 
     // Start is called before the first frame update
     void Update()
     {
-        clicked = GameObject.Find("Button Grenade").GetComponent<GrenadeButton>();
+        grenadeButtonPlayerOne = GameObject.Find("Button Grenade P1").GetComponent<P1GrenadeButton>();
         //Debug.Log(clicked.isClicked);
-        if (clicked.isClicked)
+        if (grenadeButtonPlayerOne.isClicked)
         {
-            ThrowGrenade();
+            ThrowGrenadeViewOne();
+        }
+
+        grenadeButtonPlayerTwo = GameObject.Find("Button Grenade P2").GetComponent<P2GrenadeButton>();
+        //Debug.Log(clicked.isClicked);
+        if (grenadeButtonPlayerTwo.isClicked)
+        {
+            ThrowGrenadeViewTwo();
         }
     }
 
     // Update is called once per frame
-    void ThrowGrenade()
+    void ThrowGrenadeViewOne()
     {
-        GameObject grenade = Instantiate(grenadePrefab, transform.position, transform.rotation);
+        GameObject grenade = Instantiate(grenadePrefab, cam.position, cam.rotation);
         Rigidbody rb = grenade.GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
-        clicked.isClicked = false;
+        rb.AddForce(cam.forward * throwForce, ForceMode.Impulse);
+        grenadeButtonPlayerOne.isClicked = false;
+    }
+
+    void ThrowGrenadeViewTwo()
+    {
+        Vector3 temp = imageTarget.position;
+        temp.y = 1.2f;
+        temp.z = 10f;
+        GameObject grenade = Instantiate(grenadePrefab, temp, cam.rotation);
+        Rigidbody rb = grenade.GetComponent<Rigidbody>();
+        rb.AddForce(imageTarget.forward * throwForce, ForceMode.Impulse);
+        grenadeButtonPlayerTwo.isClicked = false;
     }
 }
