@@ -33,18 +33,12 @@ public class ShieldManager : MonoBehaviour
 
     PoseSmoother mPoseSmoother;
 
-    public TMP_Text textShield;
-    public int shieldHP = 0;
-    public int shieldTimer = 10;
-
     public bool playerOneShieldStatus = false;
     public bool playerTwoShieldStatus = false;
     public bool playerFound = false;
 
     protected virtual void Start()
     {
-        textShield.text = shieldHP.ToString();
-        textShield.text = shieldTimer.ToString();
         mObserverBehaviour = GetComponent<ObserverBehaviour>();
 
         if (mObserverBehaviour)
@@ -56,6 +50,7 @@ public class ShieldManager : MonoBehaviour
             SetupPoseSmoothing();
         }
     }
+
 
     protected virtual void OnDestroy()
     {
@@ -159,7 +154,7 @@ public class ShieldManager : MonoBehaviour
     protected virtual void OnTrackingFound()
     {
         playerFound = true;
-        if (mObserverBehaviour && playerTwoShieldStatus)
+        if (mObserverBehaviour)
         {
             var rendererComponents = mObserverBehaviour.GetComponentsInChildren<Renderer>(true);
             var colliderComponents = mObserverBehaviour.GetComponentsInChildren<Collider>(true);
@@ -318,10 +313,6 @@ public class ShieldManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        textShield.text = shieldHP.ToString();
-    }
+
 
 }

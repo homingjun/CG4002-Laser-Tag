@@ -3,32 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class P1GrenadeButton : MonoBehaviour
+public class P1GrenadeAction : MonoBehaviour
 {
-    private GrenadeManager grenadeManager;
+    private GrenadeNumber grenadeNumber;
     private Grenade grenade;
     public GameObject grenadePrefab;
     public bool isClicked = false;
     private ShieldManager playerFoundStatus;
-    private HPManager opponentHP;
+    private OpponentHP opponentHP;
 
 
     // Start is called before the first frame update
     void Start()
     {
         Button btnOne = GameObject.Find("Button Grenade P1").GetComponent<Button>();
-        grenadeManager = GameObject.Find("Text Grenade").GetComponent<GrenadeManager>();
+        grenadeNumber = GameObject.Find("Text Grenade").GetComponent<GrenadeNumber>();
         playerFoundStatus = GameObject.Find("ImageTarget").GetComponent<ShieldManager>();
-        opponentHP = GameObject.Find("Text HP").GetComponent<HPManager>();
+        opponentHP = GameObject.Find("Text HP Opponent").GetComponent<OpponentHP>();
         grenade = grenadePrefab.GetComponent<Grenade>();
         btnOne.onClick.AddListener(TaskOnClick);
     }
 
     void TaskOnClick()
     {
-        if (grenadeManager.numGrenades > 0)
+        if (grenadeNumber.numGrenades > 0)
         {
-            grenadeManager.numGrenades -= 1;
+            grenadeNumber.numGrenades -= 1;
             grenade.hasThrown = true;
             isClicked = true;
             if (playerFoundStatus.playerFound)

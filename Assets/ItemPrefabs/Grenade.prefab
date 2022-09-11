@@ -97,7 +97,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2295132077347308193}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc8fd34ec94b28142a1429ea868bd354, type: 3}
+  m_Script: {fileID: 11500000, guid: 78a013a27ff65db49b497f99255ad7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 2
@@ -105,7 +105,7 @@ MonoBehaviour:
   force: 300
   explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
-  hasThrown: 1
+  hasThrown: 0
 --- !u!1 &2295132077347308195
 GameObject:
   m_ObjectHideFlags: 0

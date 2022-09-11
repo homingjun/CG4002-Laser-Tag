@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GrenadeManager : MonoBehaviour
+public class ShieldNumber : MonoBehaviour
 {
-    public TMP_Text textGrenade;
-    public int numGrenades = 2;
+    [SerializeField]
+    private TMP_Text textShieldNumber;
+    public int numShield = 3;
+
     // Start is called before the first frame update
     void Start()
     {
-        textGrenade.text = numGrenades.ToString();
+        textShieldNumber.text = numShield.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        textGrenade.text = numGrenades.ToString();
+        textShieldNumber.text = numShield.ToString();
     }
 }

@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class ReloadButton : MonoBehaviour
 {
-    private AmmoManager ammoManager;
+    private AmmoNumber ammoNumber;
 
     // Start is called before the first frame update
     void Start()
     {
         Button btn = GameObject.Find("Button Reload").GetComponent<Button>();
-        ammoManager = GameObject.Find("Text Ammo").GetComponent<AmmoManager>();
+        ammoNumber = GameObject.Find("Text Ammo").GetComponent<AmmoNumber>();
         btn.onClick.AddListener(TaskOnClick);
     }
 
     void TaskOnClick()
     {
-        if (ammoManager.ammo < 6)
-            ammoManager.ammo = 6;
+        if (ammoNumber.numAmmo < 6)
+            ammoNumber.numAmmo = 6;
     }
 }

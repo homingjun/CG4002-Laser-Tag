@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class P2GrenadeButton : MonoBehaviour
 {
-    private GrenadeManager grenadeManager;
+    private GrenadeNumber grenadeManager;
     private Grenade grenade;
     public GameObject grenadePrefab;
     public bool isClicked = false;
@@ -14,7 +14,7 @@ public class P2GrenadeButton : MonoBehaviour
     void Start()
     {
         Button btnTwo = GameObject.Find("Button Grenade P2").GetComponent<Button>();
-        grenadeManager = GameObject.Find("Text Grenade").GetComponent<GrenadeManager>();
+        grenadeManager = GameObject.Find("Text Grenade").GetComponent<GrenadeNumber>();
         grenade = grenadePrefab.GetComponent<Grenade>();
         btnTwo.onClick.AddListener(TaskOnClick);
     }
