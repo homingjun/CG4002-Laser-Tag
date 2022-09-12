@@ -10,7 +10,7 @@ public class ShootButton : MonoBehaviour
     [SerializeField]
     private ShieldManager playerFoundStatus;
     [SerializeField]
-    private OpponentHP opponentHP; //Text HP Opponent
+    private MyHP opponentHP; //Text HP Opponent
     [SerializeField]
     private ShieldHP opponentShieldHP; //Text Shield Opponent
 
@@ -28,6 +28,6 @@ public class ShootButton : MonoBehaviour
         if (playerFoundStatus.playerFound && opponentShieldHP.shieldHP > 0)
             opponentShieldHP.shieldHP -= 10;
         else if (playerFoundStatus.playerFound)
-            opponentHP.oppHP -= 10;
+            opponentHP.HP -= 10;
     }
 }

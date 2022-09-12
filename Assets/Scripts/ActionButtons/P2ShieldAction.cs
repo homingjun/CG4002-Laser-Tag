@@ -18,6 +18,10 @@ public class P2ShieldAction : MonoBehaviour
     private ShieldManager shieldManagerPlayerTwoShieldStatus; //ImageTarget
     [SerializeField]
     private Image shieldCooldown; //Shield Fill Opponent
+    [SerializeField]
+    private MeshRenderer shieldMesh; //Shield
+    [SerializeField]
+    private ShieldManager playerFoundStatus; //ImageTarget
     private bool timerStatus = false;
     private float cooldownTime = 10f;
     private float cooldownTimer = 0.0f;
@@ -37,7 +41,7 @@ public class P2ShieldAction : MonoBehaviour
     */
     void TaskOnClick()
     {
-        if (shieldNumber.numShield > 0)
+        if (shieldNumber.numShield > 0 && playerFoundStatus.playerFound)
         {
             timerStatus = true;
 
@@ -46,6 +50,7 @@ public class P2ShieldAction : MonoBehaviour
 
             shieldManagerPlayerTwoShieldStatus.playerTwoShieldStatus = true;
             shieldManagerTimerStatus.enabled = true;
+            shieldMesh.enabled = true;
 
             cooldownTimer = cooldownTime;
         }
@@ -63,6 +68,7 @@ public class P2ShieldAction : MonoBehaviour
 
         shieldManagerTimerStatus.enabled = false;
         shieldManagerPlayerTwoShieldStatus.playerTwoShieldStatus = false;
+        shieldMesh.enabled = false;
     }
 
     /*

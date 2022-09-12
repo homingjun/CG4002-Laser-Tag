@@ -16,6 +16,10 @@ public class MyHP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (HP <= 0)
+        {
+            HP = 0;
+        }
         textHP.text = HP.ToString();
     }
 }

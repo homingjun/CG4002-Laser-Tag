@@ -14,7 +14,7 @@ public class GrenadeThrower : MonoBehaviour
     private float throwHeightOpp = 0.5f;
     public GameObject grenadePrefab;
     private P1GrenadeAction grenadeButtonPlayerOne;
-    private P2GrenadeButton grenadeButtonPlayerTwo;
+    private P2GrenadeAction grenadeButtonPlayerTwo;
 
 
     // Start is called before the first frame update
@@ -27,7 +27,7 @@ public class GrenadeThrower : MonoBehaviour
             ThrowGrenadeViewOne();
         }
 
-        grenadeButtonPlayerTwo = GameObject.Find("Button Grenade P2").GetComponent<P2GrenadeButton>();
+        grenadeButtonPlayerTwo = GameObject.Find("Button Grenade P2").GetComponent<P2GrenadeAction>();
         //Debug.Log(clicked.isClicked);
         if (grenadeButtonPlayerTwo.isClicked)
         {

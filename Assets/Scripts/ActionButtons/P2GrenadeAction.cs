@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class P1GrenadeAction : MonoBehaviour
+public class P2GrenadeAction : MonoBehaviour
 {
     [SerializeField]
     private Grenade grenade;
     [SerializeField]
-    private GrenadeNumber grenadeNumber; //Text Grenade
+    private GrenadeNumber grenadeNumber; //Text Grenade Opponent
     [SerializeField]
-    private ShieldManager playerFoundStatus; //ImageTarget
+    private MyHP opponentHP; //Text HP
     [SerializeField]
-    private MyHP opponentHP; //Text HP Opponent
+    private ShieldHP opponentShieldHP; //Text Shield
     [SerializeField]
-    private ShieldHP opponentShieldHP; //Text Shield Opponent
+    private Image hpBar;
     public bool isClicked = false;
     private int currentShieldHP;
 
@@ -22,7 +22,7 @@ public class P1GrenadeAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Button btnOne = GameObject.Find("Button Grenade P1").GetComponent<Button>();
+        Button btnOne = GameObject.Find("Button Grenade P2").GetComponent<Button>();
         btnOne.onClick.AddListener(TaskOnClick);
     }
 
@@ -33,15 +33,18 @@ public class P1GrenadeAction : MonoBehaviour
             grenadeNumber.numGrenades -= 1;
             grenade.hasThrown = true;
             isClicked = true;
-            if (playerFoundStatus.playerFound && opponentShieldHP.shieldHP > 0)
+            if (opponentShieldHP.shieldHP > 0)
             {
                 currentShieldHP = opponentShieldHP.shieldHP;
                 currentShieldHP -= 30;
                 opponentShieldHP.shieldHP -= 30;
                 opponentHP.HP += currentShieldHP; //Ensures that the excess grenade damage reduces the Player's HP
             }
-            else if (playerFoundStatus.playerFound)
+            else
+            {
                 opponentHP.HP -= 30;
+                hpBar.fillAmount = opponentHP.HP / (float)100;
+            }
         }
     }
 }

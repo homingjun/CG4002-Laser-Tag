@@ -1,28 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public TMP_Text textScore;
-    public int lastScore;
-    public int currentScore = 0;
+    [SerializeField]
+    private TMP_Text textPlayerOneScore;
+    [SerializeField]
+    private TMP_Text textPlayerTwoScore;
+    private int playerOneScore = 0;
+    private int playerTwoScore = 0;
+    [SerializeField]
+    private MyHP playerOneHP;
+    [SerializeField]
+    private MyHP playerTwoHP;
+    [SerializeField]
+    private Image hpBar;
 
     // Start is called before the first frame update
     void Start()
     {
-        textScore.text = currentScore.ToString();
+        textPlayerOneScore.text = playerOneScore.ToString();
+        textPlayerTwoScore.text = playerTwoScore.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (lastScore != currentScore) // IF STATEMENT THAT CHECKS IF SCORE HAS CHANGED👈
-        // {
-        //     textScore.text = currentScore.ToString();
-        // }
-        textScore.text = currentScore.ToString();
+        if (playerOneHP.HP <= 0)
+        {
+            playerTwoScore += 1;
+            playerOneHP.HP = 100;
+            hpBar.fillAmount = 1f;
+        }
+
+        if (playerTwoHP.HP <= 0)
+        {
+            playerOneScore += 1;
+            playerTwoHP.HP = 100;
+        }
+        textPlayerOneScore.text = playerOneScore.ToString();
+        textPlayerTwoScore.text = playerTwoScore.ToString();
     }
 
 }
