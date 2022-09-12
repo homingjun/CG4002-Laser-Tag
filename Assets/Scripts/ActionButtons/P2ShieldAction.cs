@@ -4,22 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class P1ShieldAction : MonoBehaviour
+public class P2ShieldAction : MonoBehaviour
 {
     [SerializeField]
-    private ShieldHP shieldHP; //Text Shield
+    private ShieldHP shieldHP; //Text Shield Opponent
     [SerializeField]
-    private ShieldTimer shieldTimer; //Text Shield Timer
+    private ShieldTimer shieldTimer; //Text Shield Timer Opponent
     [SerializeField]
-    private ShieldNumber shieldNumber; //Text Shield Number
+    private ShieldNumber shieldNumber; //Text Shield Number Opponent
     [SerializeField]
-    private TextMeshProUGUI shieldManagerTimerStatus; //Text Shield Timer
+    private TextMeshProUGUI shieldManagerTimerStatus; //Text Shield Timer Opponent
     [SerializeField]
-    private ShieldManager shieldManagerPlayerOneShieldStatus; //ImageTarget
+    private ShieldManager shieldManagerPlayerTwoShieldStatus; //ImageTarget
     [SerializeField]
-    private Image shieldCooldown; //Shield Fill
-    [SerializeField]
-    private Image shieldBar; //Shield Bar
+    private Image shieldCooldown; //Shield Fill Opponent
     private bool timerStatus = false;
     private float cooldownTime = 10f;
     private float cooldownTimer = 0.0f;
@@ -27,10 +25,9 @@ public class P1ShieldAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Button btn = GameObject.Find("Button Shield P1").GetComponent<Button>();
+        Button btn = GameObject.Find("Button Shield P2").GetComponent<Button>();
 
         shieldCooldown.fillAmount = 0.0f;
-        shieldBar.fillAmount = 0.0f;
 
         btn.onClick.AddListener(TaskOnClick);
     }
@@ -45,10 +42,9 @@ public class P1ShieldAction : MonoBehaviour
             timerStatus = true;
 
             shieldHP.shieldHP = 30;
-            shieldBar.fillAmount = 1f;
             shieldNumber.numShield -= 1;
 
-            shieldManagerPlayerOneShieldStatus.playerOneShieldStatus = true;
+            shieldManagerPlayerTwoShieldStatus.playerTwoShieldStatus = true;
             shieldManagerTimerStatus.enabled = true;
 
             cooldownTimer = cooldownTime;
@@ -63,11 +59,10 @@ public class P1ShieldAction : MonoBehaviour
         timerStatus = false;
 
         shieldHP.shieldHP = 0;
-        shieldBar.fillAmount = 0.0f;
         shieldCooldown.fillAmount = 0.0f;
 
         shieldManagerTimerStatus.enabled = false;
-        shieldManagerPlayerOneShieldStatus.playerOneShieldStatus = false;
+        shieldManagerPlayerTwoShieldStatus.playerTwoShieldStatus = false;
     }
 
     /*

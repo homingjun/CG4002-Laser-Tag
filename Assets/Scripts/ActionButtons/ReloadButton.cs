@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class ReloadButton : MonoBehaviour
 {
-    private AmmoNumber ammoNumber;
+    [SerializeField]
+    private AmmoNumber ammoNumber; //Text Ammo
 
     // Start is called before the first frame update
     void Start()
     {
         Button btn = GameObject.Find("Button Reload").GetComponent<Button>();
-        ammoNumber = GameObject.Find("Text Ammo").GetComponent<AmmoNumber>();
         btn.onClick.AddListener(TaskOnClick);
     }
 

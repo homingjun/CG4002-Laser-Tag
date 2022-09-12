@@ -5,13 +5,19 @@ using UnityEngine.UI;
 
 public class ShootButton : MonoBehaviour
 {
-    private AmmoNumber ammoNumber;
+    [SerializeField]
+    private AmmoNumber ammoNumber; //Text Ammo
+    [SerializeField]
+    private ShieldManager playerFoundStatus;
+    [SerializeField]
+    private OpponentHP opponentHP; //Text HP Opponent
+    [SerializeField]
+    private ShieldHP opponentShieldHP; //Text Shield Opponent
 
     // Start is called before the first frame update
     void Start()
     {
         Button btn = GameObject.Find("Button Shoot").GetComponent<Button>();
-        ammoNumber = GameObject.Find("Text Ammo").GetComponent<AmmoNumber>();
         btn.onClick.AddListener(TaskOnClick);
     }
 
@@ -19,5 +25,9 @@ public class ShootButton : MonoBehaviour
     {
         if (ammoNumber.numAmmo > 0)
             ammoNumber.numAmmo -= 1;
+        if (playerFoundStatus.playerFound && opponentShieldHP.shieldHP > 0)
+            opponentShieldHP.shieldHP -= 10;
+        else if (playerFoundStatus.playerFound)
+            opponentHP.oppHP -= 10;
     }
 }

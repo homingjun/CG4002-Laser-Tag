@@ -18,6 +18,10 @@ public class ShieldHP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (shieldHP <= 0)
+        {
+            shieldHP = 0;
+        }
         textShieldHP.text = shieldHP.ToString();
     }
 }

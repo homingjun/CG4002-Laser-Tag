@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class GrenadeThrower : MonoBehaviour
 {
-    public Transform cam;
-    //public Transform imageTarget;
-    public float throwForce = 40f;
+    [SerializeField]
+    private Transform cam;
+    [SerializeField]
+    private float throwForce = 40f;
+    [SerializeField]
+    private float throwHeight = 0.5f;
+    [SerializeField]
+    private float throwHeightOpp = 0.5f;
     public GameObject grenadePrefab;
     private P1GrenadeAction grenadeButtonPlayerOne;
     private P2GrenadeButton grenadeButtonPlayerTwo;
@@ -33,7 +38,9 @@ public class GrenadeThrower : MonoBehaviour
     // Update is called once per frame
     void ThrowGrenadeViewOne()
     {
-        GameObject grenade = Instantiate(grenadePrefab, cam.position, cam.rotation);
+        Vector3 temp = cam.position;
+        temp.y = throwHeight;
+        GameObject grenade = Instantiate(grenadePrefab, temp, cam.rotation);
         Rigidbody rb = grenade.GetComponent<Rigidbody>();
         rb.AddForce(cam.forward * throwForce, ForceMode.Impulse);
         grenadeButtonPlayerOne.isClicked = false;
@@ -42,11 +49,11 @@ public class GrenadeThrower : MonoBehaviour
     void ThrowGrenadeViewTwo()
     {
         Vector3 temp = cam.position;
-        temp.y = 1.2f;
+        temp.y = throwHeightOpp;
         temp.z = 10f;
         GameObject grenade = Instantiate(grenadePrefab, temp, cam.rotation);
         Rigidbody rb = grenade.GetComponent<Rigidbody>();
-        rb.AddForce(cam.forward * throwForce, ForceMode.Impulse);
+        rb.AddForce(cam.forward * -throwForce, ForceMode.Impulse);
         grenadeButtonPlayerTwo.isClicked = false;
     }
 }

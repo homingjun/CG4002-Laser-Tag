@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class ScoreButton : MonoBehaviour
 {
-    private ScoreManager scoreManager;
+    [SerializeField]
+    private ScoreManager scoreManager; //Text P1 Score
 
     // Start is called before the first frame update
     void Start()
     {
         Button btn = GameObject.Find("Button Score P1").GetComponent<Button>();
-        scoreManager = GameObject.Find("Text P1 Score").GetComponent<ScoreManager>();
         btn.onClick.AddListener(TaskOnClick);
     }
 
