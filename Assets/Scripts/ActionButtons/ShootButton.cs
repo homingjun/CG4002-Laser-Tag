@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class ShootButton : MonoBehaviour
 {
     [SerializeField]
-    private AmmoNumber ammoNumber; //Text Ammo
+    private AmmoUIManager ammoNumber; //Text Ammo
     [SerializeField]
     private ShieldManager playerFoundStatus;
     [SerializeField]
-    private MyHP opponentHP; //Text HP Opponent
+    private HPUIManager opponentHP; //Text HP Opponent
     [SerializeField]
     private ShieldUIManager opponentShieldHP; //Text Shield Opponent
 

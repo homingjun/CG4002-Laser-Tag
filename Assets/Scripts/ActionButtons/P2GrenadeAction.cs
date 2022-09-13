@@ -10,7 +10,7 @@ public class P2GrenadeAction : MonoBehaviour
     [SerializeField]
     private GrenadeUIManager grenadeNumber; //Text Grenade Opponent
     [SerializeField]
-    private MyHP opponentHP; //Text HP
+    private HPUIManager opponentHP; //Text HP
     [SerializeField]
     private ShieldUIManager opponentShieldHP; //Text Shield
     [SerializeField]

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ReloadButton : MonoBehaviour
 {
     [SerializeField]
-    private AmmoNumber ammoNumber; //Text Ammo
+    private AmmoUIManager ammoNumber; //Text Ammo
 
     // Start is called before the first frame update
     void Start()

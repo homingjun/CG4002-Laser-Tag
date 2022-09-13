@@ -12,7 +12,7 @@ public class P1GrenadeAction : MonoBehaviour
     [SerializeField]
     private ShieldManager playerFoundStatus; //ImageTarget
     [SerializeField]
-    private MyHP opponentHP; //Text HP Opponent
+    private HPUIManager opponentHP; //Text HP Opponent
     [SerializeField]
     private ShieldUIManager opponentShieldHP; //Text Shield Opponent
     public bool isClicked = false;

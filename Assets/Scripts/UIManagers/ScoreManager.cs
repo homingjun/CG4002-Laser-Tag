@@ -13,9 +13,9 @@ public class ScoreManager : MonoBehaviour
     private int playerOneScore = 0;
     private int playerTwoScore = 0;
     [SerializeField]
-    private MyHP playerOneHP;
+    private HPUIManager playerOneHP;
     [SerializeField]
-    private MyHP playerTwoHP;
+    private HPUIManager playerTwoHP;
     [SerializeField]
     private Image hpBar;
 
