@@ -7,11 +7,11 @@ using TMPro;
 public class P1ShieldAction : MonoBehaviour
 {
     [SerializeField]
-    private ShieldHP shieldHP; //Text Shield
+    private ShieldUIManager shieldHP; //Text Shield
     [SerializeField]
-    private ShieldTimer shieldTimer; //Text Shield Timer
+    private ShieldUIManager shieldTimer; //Text Shield Timer
     [SerializeField]
-    private ShieldNumber shieldNumber; //Text Shield Number
+    private ShieldUIManager shieldNumber; //Text Shield Number
     [SerializeField]
     private TextMeshProUGUI shieldManagerTimerStatus; //Text Shield Timer
     [SerializeField]

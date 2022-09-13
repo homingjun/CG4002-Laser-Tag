@@ -12,7 +12,7 @@ public class ShootButton : MonoBehaviour
     [SerializeField]
     private MyHP opponentHP; //Text HP Opponent
     [SerializeField]
-    private ShieldHP opponentShieldHP; //Text Shield Opponent
+    private ShieldUIManager opponentShieldHP; //Text Shield Opponent
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +24,13 @@ public class ShootButton : MonoBehaviour
     void TaskOnClick()
     {
         if (ammoNumber.numAmmo > 0)
+        {
             ammoNumber.numAmmo -= 1;
-        if (playerFoundStatus.playerFound && opponentShieldHP.shieldHP > 0)
-            opponentShieldHP.shieldHP -= 10;
-        else if (playerFoundStatus.playerFound)
-            opponentHP.HP -= 10;
+            if (playerFoundStatus.playerFound && opponentShieldHP.shieldHP > 0)
+                opponentShieldHP.shieldHP -= 10;
+            else if (playerFoundStatus.playerFound)
+                opponentHP.HP -= 10;
+        }
+
     }
 }

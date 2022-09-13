@@ -7,11 +7,11 @@ using TMPro;
 public class P2ShieldAction : MonoBehaviour
 {
     [SerializeField]
-    private ShieldHP shieldHP; //Text Shield Opponent
+    private ShieldUIManager shieldHP; //Text Shield Opponent
     [SerializeField]
-    private ShieldTimer shieldTimer; //Text Shield Timer Opponent
+    private ShieldUIManager shieldTimer; //Text Shield Timer Opponent
     [SerializeField]
-    private ShieldNumber shieldNumber; //Text Shield Number Opponent
+    private ShieldUIManager shieldNumber; //Text Shield Number Opponent
     [SerializeField]
     private TextMeshProUGUI shieldManagerTimerStatus; //Text Shield Timer Opponent
     [SerializeField]

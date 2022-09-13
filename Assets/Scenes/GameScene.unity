@@ -153,8 +153,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
-  m_RootOrder: 9
+  m_Father: {fileID: 536908334}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -210,7 +210,6 @@ GameObject:
   - component: {fileID: 26113522}
   - component: {fileID: 26113525}
   - component: {fileID: 26113524}
-  - component: {fileID: 26113523}
   m_Layer: 5
   m_Name: Text Shield Opponent
   m_TagString: Untagged
@@ -230,28 +229,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
-  m_RootOrder: 8
+  m_Father: {fileID: 536908334}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 79.79997, y: -18.600037}
   m_SizeDelta: {x: 50, y: 51.556}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &26113523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26113521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 107f16e8c7d6df5458b77ede018fad9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textShieldHP: {fileID: 26113524}
-  shieldHP: 0
 --- !u!114 &26113524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,12 +359,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34175613}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
+  m_Father: {fileID: 1448487088}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -586,7 +571,6 @@ GameObject:
   - component: {fileID: 62468456}
   - component: {fileID: 62468459}
   - component: {fileID: 62468458}
-  - component: {fileID: 62468460}
   m_Layer: 5
   m_Name: Text Shield Timer
   m_TagString: Untagged
@@ -606,7 +590,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
+  m_Father: {fileID: 1448487088}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -711,20 +695,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62468455}
   m_CullTransparentMesh: 1
---- !u!114 &62468460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62468455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2848c24a76082dd42b5648a82042755f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textShieldTimer: {fileID: 62468458}
-  shieldTimer: 10
 --- !u!1001 &141254337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1657,7 +1627,7 @@ MonoBehaviour:
   ammoNumber: {fileID: 289690893}
   playerFoundStatus: {fileID: 690235661}
   opponentHP: {fileID: 55529650}
-  opponentShieldHP: {fileID: 26113523}
+  opponentShieldHP: {fileID: 536908335}
 --- !u!1 &434154205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,6 +1945,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470662325}
   m_CullTransparentMesh: 1
+--- !u!1 &536908333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 536908334}
+  - component: {fileID: 536908335}
+  m_Layer: 5
+  m_Name: Shield Items Opponent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &536908334
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536908333}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 26113522}
+  - {fileID: 18953886}
+  - {fileID: 939297558}
+  - {fileID: 1237552526}
+  - {fileID: 846997228}
+  m_Father: {fileID: 1064142428}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &536908335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536908333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49175fb488009704e921334c3d1643df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textShieldHP: {fileID: 26113524}
+  shieldHP: 0
+  textShieldNumber: {fileID: 846997226}
+  numShield: 3
+  textShieldTimer: {fileID: 1237552528}
+  shieldTimer: 10
 --- !u!1 &545301980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,7 +2144,7 @@ MonoBehaviour:
   grenadeNumber: {fileID: 1265164948}
   playerFoundStatus: {fileID: 690235661}
   opponentHP: {fileID: 55529650}
-  opponentShieldHP: {fileID: 26113523}
+  opponentShieldHP: {fileID: 536908335}
   isClicked: 0
 --- !u!1 &550545029
 GameObject:
@@ -2566,7 +2596,7 @@ MonoBehaviour:
   grenade: {fileID: 2295132076438554726, guid: 4c6775170e16e4c478c5b13ed7ff2024, type: 3}
   grenadeNumber: {fileID: 1446577406}
   opponentHP: {fileID: 1501244542}
-  opponentShieldHP: {fileID: 1894660580}
+  opponentShieldHP: {fileID: 1448487089}
   hpBar: {fileID: 1927876435}
   isClicked: 0
 --- !u!1 &670429448
@@ -2910,7 +2940,6 @@ GameObject:
   - component: {fileID: 743860531}
   - component: {fileID: 743860534}
   - component: {fileID: 743860533}
-  - component: {fileID: 743860535}
   m_Layer: 5
   m_Name: Text Shield Number
   m_TagString: Untagged
@@ -2930,7 +2959,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
+  m_Father: {fileID: 1448487088}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3035,20 +3064,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743860530}
   m_CullTransparentMesh: 1
---- !u!114 &743860535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 743860530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef2b73e2dfaafea4ca6d905e58c576d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textShieldNumber: {fileID: 743860533}
-  numShield: 3
 --- !u!1 &774766159
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,7 +3151,6 @@ GameObject:
   - component: {fileID: 846997228}
   - component: {fileID: 846997227}
   - component: {fileID: 846997226}
-  - component: {fileID: 846997225}
   m_Layer: 5
   m_Name: Text Shield Number Opponent
   m_TagString: Untagged
@@ -3144,20 +3158,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &846997225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846997224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef2b73e2dfaafea4ca6d905e58c576d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textShieldNumber: {fileID: 846997226}
-  numShield: 3
 --- !u!114 &846997226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3267,8 +3267,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
-  m_RootOrder: 12
+  m_Father: {fileID: 536908334}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3410,9 +3410,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ae504a89d0a1b419e97cb26981cc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldHP: {fileID: 26113523}
-  shieldTimer: {fileID: 1237552527}
-  shieldNumber: {fileID: 846997225}
+  shieldHP: {fileID: 536908335}
+  shieldTimer: {fileID: 536908335}
+  shieldNumber: {fileID: 536908335}
   shieldManagerTimerStatus: {fileID: 1237552528}
   shieldManagerPlayerTwoShieldStatus: {fileID: 690235661}
   shieldCooldown: {fileID: 18953887}
@@ -3579,8 +3579,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
-  m_RootOrder: 10
+  m_Father: {fileID: 536908334}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3685,19 +3685,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1894660576}
-  - {fileID: 2121985714}
-  - {fileID: 1589276654}
-  - {fileID: 62468456}
-  - {fileID: 34175614}
-  - {fileID: 1952413462}
-  - {fileID: 743860531}
-  - {fileID: 1360800984}
-  - {fileID: 26113522}
-  - {fileID: 18953886}
-  - {fileID: 939297558}
-  - {fileID: 1237552526}
-  - {fileID: 846997228}
+  - {fileID: 1448487088}
+  - {fileID: 536908334}
   m_Father: {fileID: 438103558}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3841,9 +3830,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606c523cb46a36f44ad30d74e6cb8e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldHP: {fileID: 1894660580}
-  shieldTimer: {fileID: 62468460}
-  shieldNumber: {fileID: 743860535}
+  shieldHP: {fileID: 1448487089}
+  shieldTimer: {fileID: 1448487089}
+  shieldNumber: {fileID: 1448487089}
   shieldManagerTimerStatus: {fileID: 62468458}
   shieldManagerPlayerOneShieldStatus: {fileID: 690235661}
   shieldCooldown: {fileID: 2121985715}
@@ -3994,7 +3983,6 @@ GameObject:
   - component: {fileID: 1237552526}
   - component: {fileID: 1237552529}
   - component: {fileID: 1237552528}
-  - component: {fileID: 1237552527}
   m_Layer: 5
   m_Name: Text Shield Timer Opponent
   m_TagString: Untagged
@@ -4014,28 +4002,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
-  m_RootOrder: 11
+  m_Father: {fileID: 536908334}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 114.59999, y: -10.400024}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1237552527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237552525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2848c24a76082dd42b5648a82042755f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textShieldTimer: {fileID: 1237552528}
-  shieldTimer: 10
 --- !u!114 &1237552528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4558,12 +4532,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360800983}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
+  m_Father: {fileID: 1448487088}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4835,6 +4809,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446577404}
   m_CullTransparentMesh: 1
+--- !u!1 &1448487087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1448487088}
+  - component: {fileID: 1448487089}
+  m_Layer: 5
+  m_Name: Shield Items
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1448487088
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448487087}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1894660576}
+  - {fileID: 2121985714}
+  - {fileID: 1589276654}
+  - {fileID: 62468456}
+  - {fileID: 34175614}
+  - {fileID: 1952413462}
+  - {fileID: 743860531}
+  - {fileID: 1360800984}
+  m_Father: {fileID: 1064142428}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1448487089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448487087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49175fb488009704e921334c3d1643df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textShieldHP: {fileID: 1894660578}
+  shieldHP: 0
+  textShieldNumber: {fileID: 743860533}
+  numShield: 3
+  textShieldTimer: {fileID: 62468458}
+  shieldTimer: 10
 --- !u!1 &1501244537
 GameObject:
   m_ObjectHideFlags: 0
@@ -5226,7 +5263,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
+  m_Father: {fileID: 1448487088}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5536,7 +5573,6 @@ GameObject:
   - component: {fileID: 1894660576}
   - component: {fileID: 1894660579}
   - component: {fileID: 1894660578}
-  - component: {fileID: 1894660580}
   m_Layer: 5
   m_Name: Text Shield
   m_TagString: Untagged
@@ -5556,12 +5592,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
+  m_Father: {fileID: 1448487088}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -555.7, y: -333.6}
+  m_AnchoredPosition: {x: -555.7, y: -333.59998}
   m_SizeDelta: {x: 50, y: 51.556}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1894660578
@@ -5661,20 +5697,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894660575}
   m_CullTransparentMesh: 1
---- !u!114 &1894660580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894660575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 107f16e8c7d6df5458b77ede018fad9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textShieldHP: {fileID: 1894660578}
-  shieldHP: 0
 --- !u!1 &1927876433
 GameObject:
   m_ObjectHideFlags: 0
@@ -5776,12 +5798,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952413461}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
+  m_Father: {fileID: 1448487088}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5992,7 +6014,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064142428}
+  m_Father: {fileID: 1448487088}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
