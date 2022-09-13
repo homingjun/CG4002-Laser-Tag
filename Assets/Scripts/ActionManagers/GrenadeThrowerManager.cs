@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrenadeThrower : MonoBehaviour
+public class GrenadeThrowerManager : MonoBehaviour
 {
     [SerializeField]
     private Transform cam;
