@@ -14,6 +14,8 @@ public class P2GrenadeAction : MonoBehaviour
     [SerializeField]
     private ShieldUIManager opponentShieldHP; //Text Shield
     [SerializeField]
+    private AudioManager grenadeSound;
+    [SerializeField]
     private Image hpBar;
     public bool isClicked = false;
     private int currentShieldHP;
@@ -45,6 +47,7 @@ public class P2GrenadeAction : MonoBehaviour
                 opponentHP.HP -= 30;
                 hpBar.fillAmount = opponentHP.HP / (float)100;
             }
+            grenadeSound.GrenadeDelay();
         }
     }
 }

@@ -5,8 +5,10 @@ using TMPro;
 
 public class GrenadeUIManager : MonoBehaviour
 {
-    public TMP_Text textGrenade;
+    [SerializeField]
+    private TMP_Text textGrenade;
     public int numGrenades = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,5 +19,6 @@ public class GrenadeUIManager : MonoBehaviour
     void Update()
     {
         textGrenade.text = numGrenades.ToString();
+
     }
 }

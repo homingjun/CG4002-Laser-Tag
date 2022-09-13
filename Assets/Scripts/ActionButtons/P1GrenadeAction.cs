@@ -15,6 +15,8 @@ public class P1GrenadeAction : MonoBehaviour
     private HPUIManager opponentHP; //Text HP Opponent
     [SerializeField]
     private ShieldUIManager opponentShieldHP; //Text Shield Opponent
+    [SerializeField]
+    private AudioManager grenadeSound;
     public bool isClicked = false;
     private int currentShieldHP;
 
@@ -42,6 +44,7 @@ public class P1GrenadeAction : MonoBehaviour
             }
             else if (playerFoundStatus.playerFound)
                 opponentHP.HP -= 30;
+            grenadeSound.GrenadeDelay();
         }
     }
 }

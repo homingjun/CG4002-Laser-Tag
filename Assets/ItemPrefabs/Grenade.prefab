@@ -105,7 +105,8 @@ MonoBehaviour:
   force: 300
   explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
-  hasThrown: 0
+  hasThrown: 1
+  hasExploded: 0
 --- !u!1 &2295132077347308195
 GameObject:
   m_ObjectHideFlags: 0

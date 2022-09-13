@@ -11,7 +11,6 @@ public class Grenade : MonoBehaviour
     public GameObject explosionEffect;
 
     float countdown;
-    bool hasExploded = false;
     public bool hasThrown = false;
 
     // Start is called before the first frame update
@@ -28,7 +27,7 @@ public class Grenade : MonoBehaviour
             countdown -= Time.deltaTime;
         }
 
-        if (countdown <= 0f && !hasExploded && hasThrown)
+        if (countdown <= 0f && hasThrown)
         {
             Explode();
         }
@@ -47,7 +46,6 @@ public class Grenade : MonoBehaviour
                 rb.AddExplosionForce(force, transform.position, radius);
             }
         }*/
-
         Destroy(gameObject);
     }
 }

@@ -31,6 +31,5 @@ public class ShootButton : MonoBehaviour
             else if (playerFoundStatus.playerFound)
                 opponentHP.HP -= 10;
         }
-
     }
 }

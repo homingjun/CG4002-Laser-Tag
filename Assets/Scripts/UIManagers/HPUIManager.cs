@@ -5,7 +5,8 @@ using TMPro;
 
 public class HPUIManager : MonoBehaviour
 {
-    public TMP_Text textHP;
+    [SerializeField]
+    private TMP_Text textHP;
     public int HP = 100;
     // Start is called before the first frame update
     void Start()

@@ -5,7 +5,8 @@ using TMPro;
 
 public class AmmoUIManager : MonoBehaviour
 {
-    public TMP_Text textAmmo;
+    [SerializeField]
+    private TMP_Text textAmmo;
     public int numAmmo = 6;
     // Start is called before the first frame update
     void Start()
