@@ -13,6 +13,8 @@ public class ShootButton : MonoBehaviour
     private HPUIManager opponentHP; //Text HP Opponent
     [SerializeField]
     private ShieldUIManager opponentShieldHP; //Text Shield Opponent
+    [SerializeField]
+    private AudioManager bulletSound;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,7 @@ public class ShootButton : MonoBehaviour
                 opponentShieldHP.shieldHP -= 10;
             else if (playerFoundStatus.playerFound)
                 opponentHP.HP -= 10;
+            bulletSound.PlayBulletSound();
         }
     }
 }

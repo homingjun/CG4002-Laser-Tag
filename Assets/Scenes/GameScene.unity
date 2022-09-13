@@ -1573,19 +1573,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 314266031}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 438103559}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlayBulletSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &314266031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1640,6 +1628,7 @@ MonoBehaviour:
   playerFoundStatus: {fileID: 690235661}
   opponentHP: {fileID: 55529650}
   opponentShieldHP: {fileID: 536908335}
+  bulletSound: {fileID: 438103559}
 --- !u!1 &434154205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,7 +1827,6 @@ MonoBehaviour:
   bulletSound: {fileID: 1761168231}
   grenadeSound: {fileID: 1254107360}
   shieldSound: {fileID: 1360800987}
-  grenade: {fileID: 2295132076438554726, guid: 4c6775170e16e4c478c5b13ed7ff2024, type: 3}
 --- !u!1 &470662325
 GameObject:
   m_ObjectHideFlags: 0
