@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GrenadeNumber : MonoBehaviour
+public class GrenadeUIManager : MonoBehaviour
 {
     public TMP_Text textGrenade;
     public int numGrenades = 2;

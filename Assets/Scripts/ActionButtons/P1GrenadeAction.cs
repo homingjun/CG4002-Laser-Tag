@@ -8,7 +8,7 @@ public class P1GrenadeAction : MonoBehaviour
     [SerializeField]
     private Grenade grenade;
     [SerializeField]
-    private GrenadeNumber grenadeNumber; //Text Grenade
+    private GrenadeUIManager grenadeNumber; //Text Grenade
     [SerializeField]
     private ShieldManager playerFoundStatus; //ImageTarget
     [SerializeField]
