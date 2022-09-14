@@ -20,6 +20,8 @@ public class P1ShieldAction : MonoBehaviour
     private Image shieldCooldown; //Shield Fill
     [SerializeField]
     private Image shieldBar; //Shield Bar
+    [SerializeField]
+    private MeshRenderer shieldMesh; //Shield
     private bool timerStatus = false;
     private float cooldownTime = 10f;
     private float cooldownTimer = 0.0f;
@@ -50,6 +52,7 @@ public class P1ShieldAction : MonoBehaviour
 
             shieldManagerPlayerOneShieldStatus.playerOneShieldStatus = true;
             shieldManagerTimerStatus.enabled = true;
+            shieldMesh.enabled = true;
 
             cooldownTimer = cooldownTime;
         }
@@ -68,6 +71,7 @@ public class P1ShieldAction : MonoBehaviour
 
         shieldManagerTimerStatus.enabled = false;
         shieldManagerPlayerOneShieldStatus.playerOneShieldStatus = false;
+        shieldMesh.enabled = false;
     }
 
     /*

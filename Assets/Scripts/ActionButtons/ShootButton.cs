@@ -15,6 +15,10 @@ public class ShootButton : MonoBehaviour
     private ShieldUIManager opponentShieldHP; //Text Shield Opponent
     [SerializeField]
     private AudioManager bulletSound;
+    [SerializeField]
+    private GameObject bulletHitEffect;
+    [SerializeField]
+    private Transform cam;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +29,8 @@ public class ShootButton : MonoBehaviour
 
     void TaskOnClick()
     {
+        Vector3 temp = cam.position;
+        temp.z = 5;
         if (ammoNumber.numAmmo > 0)
         {
             ammoNumber.numAmmo -= 1;
@@ -33,6 +39,7 @@ public class ShootButton : MonoBehaviour
             else if (playerFoundStatus.playerFound)
                 opponentHP.HP -= 10;
             bulletSound.PlayBulletSound();
+            Instantiate(bulletHitEffect, temp, cam.rotation);
         }
     }
 }
