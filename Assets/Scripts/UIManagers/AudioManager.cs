@@ -6,13 +6,15 @@ public class AudioManager : MonoBehaviour
 {
 
     [SerializeField]
-    private AudioSource bulletSound;
+    private AudioSource bulletSound; //Ammo Icon
     [SerializeField]
-    private AudioSource grenadeSound;
+    private AudioSource grenadeSound; //Grenade Icon
     [SerializeField]
-    private AudioSource shieldSound;
+    private AudioSource shieldSound; //Shield Icon
     [SerializeField]
-    private AudioSource shieldBreakSound;
+    private AudioSource shieldBreakSound; //Shield Items
+    [SerializeField]
+    private AudioSource reloadSound; //Ammo Items
 
     public void PlayBulletSound()
     {
@@ -36,5 +38,10 @@ public class AudioManager : MonoBehaviour
     public void PlayShieldBreakSound()
     {
         shieldBreakSound.Play();
+    }
+
+    public void PlayReloadSound()
+    {
+        reloadSound.Play();
     }
 }

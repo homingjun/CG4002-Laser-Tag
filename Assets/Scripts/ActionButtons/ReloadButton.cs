@@ -9,6 +9,9 @@ public class ReloadButton : MonoBehaviour
     private AmmoUIManager ammoPlayerOne; //Text Ammo
     [SerializeField]
     private AmmoUIManager ammoPlayerTwo; //Text Ammo Opponent
+    [SerializeField]
+    private AudioManager reloadSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +25,18 @@ public class ReloadButton : MonoBehaviour
     void ReloadPlayerOne()
     {
         if (ammoPlayerOne.numAmmo < 6)
+        {
             ammoPlayerOne.numAmmo = 6;
+            reloadSound.PlayReloadSound();
+        }
     }
 
     void ReloadPlayerTwo()
     {
         if (ammoPlayerTwo.numAmmo < 6)
+        {
             ammoPlayerTwo.numAmmo = 6;
+            reloadSound.PlayReloadSound();
+        }
     }
 }
