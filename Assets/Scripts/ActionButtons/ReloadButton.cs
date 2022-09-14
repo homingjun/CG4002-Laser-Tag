@@ -6,18 +6,28 @@ using UnityEngine.UI;
 public class ReloadButton : MonoBehaviour
 {
     [SerializeField]
-    private AmmoUIManager ammoNumber; //Text Ammo
+    private AmmoUIManager ammoPlayerOne; //Text Ammo
+    [SerializeField]
+    private AmmoUIManager ammoPlayerTwo; //Text Ammo Opponent
 
     // Start is called before the first frame update
     void Start()
     {
-        Button btn = GameObject.Find("Button Reload").GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
+        Button btnOne = GameObject.Find("Button Reload P1").GetComponent<Button>();
+        btnOne.onClick.AddListener(ReloadPlayerOne);
+        Button btnTwo = GameObject.Find("Button Reload P2").GetComponent<Button>();
+        btnTwo.onClick.AddListener(ReloadPlayerTwo);
     }
 
-    void TaskOnClick()
+    void ReloadPlayerOne()
     {
-        if (ammoNumber.numAmmo < 6)
-            ammoNumber.numAmmo = 6;
+        if (ammoPlayerOne.numAmmo < 6)
+            ammoPlayerOne.numAmmo = 6;
+    }
+
+    void ReloadPlayerTwo()
+    {
+        if (ammoPlayerTwo.numAmmo < 6)
+            ammoPlayerTwo.numAmmo = 6;
     }
 }

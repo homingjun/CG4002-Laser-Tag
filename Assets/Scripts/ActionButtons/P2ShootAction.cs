@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShootButton : MonoBehaviour
+public class P2ShootAction : MonoBehaviour
 {
     [SerializeField]
-    private AmmoUIManager ammoNumber; //Text Ammo
+    private AmmoUIManager ammoNumber; //Text Ammo Opponent
     [SerializeField]
-    private ShieldManager playerFoundStatus;
+    private HPUIManager opponentHP; //Text HP
     [SerializeField]
-    private HPUIManager opponentHP; //Text HP Opponent
-    [SerializeField]
-    private ShieldUIManager opponentShieldHP; //Text Shield Opponent
+    private ShieldUIManager opponentShieldHP; //Text Shield
     [SerializeField]
     private AudioManager bulletSound;
     [SerializeField]
@@ -23,20 +21,19 @@ public class ShootButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Button btn = GameObject.Find("Button Shoot").GetComponent<Button>();
+        Button btn = GameObject.Find("Button Shoot P2").GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
     }
 
     void TaskOnClick()
     {
         Vector3 temp = cam.position;
-        temp.z = 5;
         if (ammoNumber.numAmmo > 0)
         {
             ammoNumber.numAmmo -= 1;
-            if (playerFoundStatus.playerFound && opponentShieldHP.shieldHP > 0)
+            if (opponentShieldHP.shieldHP > 0)
                 opponentShieldHP.shieldHP -= 10;
-            else if (playerFoundStatus.playerFound)
+            else
                 opponentHP.HP -= 10;
             bulletSound.PlayBulletSound();
             Instantiate(bulletHitEffect, temp, cam.rotation);
