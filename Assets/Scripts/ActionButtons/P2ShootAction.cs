@@ -17,6 +17,8 @@ public class P2ShootAction : MonoBehaviour
     private GameObject bulletHitEffect;
     [SerializeField]
     private Transform cam;
+    [SerializeField]
+    private Image hpBar; // HP Bar
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +36,10 @@ public class P2ShootAction : MonoBehaviour
             if (opponentShieldHP.shieldHP > 0)
                 opponentShieldHP.shieldHP -= 10;
             else
+            {
                 opponentHP.HP -= 10;
+                hpBar.fillAmount = opponentHP.HP / (float)100;
+            }
             bulletSound.PlayBulletSound();
             Instantiate(bulletHitEffect, temp, cam.rotation);
         }

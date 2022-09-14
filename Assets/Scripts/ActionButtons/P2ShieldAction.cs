@@ -17,14 +17,19 @@ public class P2ShieldAction : MonoBehaviour
     [SerializeField]
     private ShieldManager shieldManagerPlayerTwoShieldStatus; //ImageTarget
     [SerializeField]
+    private AudioManager shieldSound; //Canvas
+    [SerializeField]
     private Image shieldCooldown; //Shield Fill Opponent
     [SerializeField]
     private MeshRenderer shieldMesh; //Shield
     [SerializeField]
     private ShieldManager playerFoundStatus; //ImageTarget
     private bool timerStatus = false;
+    private bool firstClick = true;
+    private bool shieldBroke = false;
     private float cooldownTime = 10f;
     private float cooldownTimer = 0.0f;
+    private float buttonCooldownTimer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +38,24 @@ public class P2ShieldAction : MonoBehaviour
 
         shieldCooldown.fillAmount = 0.0f;
 
-        btn.onClick.AddListener(TaskOnClick);
+        btn.onClick.AddListener(ShieldStatusChecker);
+    }
+
+    /*
+        Checks if the shield has been activated before. 
+        If it has not, activate the shield.
+        If it has, ensure that 10s has passed before the shield can be used again.
+    */
+    void ShieldStatusChecker()
+    {
+        if (!timerStatus && firstClick)
+        {
+            TaskOnClick();
+        }
+        if (!timerStatus && buttonCooldownTimer >= 10f)
+        {
+            TaskOnClick();
+        }
     }
 
     /*
@@ -44,6 +66,10 @@ public class P2ShieldAction : MonoBehaviour
         if (shieldNumber.numShield > 0 && playerFoundStatus.playerFound)
         {
             timerStatus = true;
+            firstClick = false;
+            shieldBroke = false;
+            buttonCooldownTimer = 0.0f;
+            shieldSound.PlayShieldSound();
 
             shieldHP.shieldHP = 30;
             shieldNumber.numShield -= 1;
@@ -62,6 +88,8 @@ public class P2ShieldAction : MonoBehaviour
     void RemoveShield()
     {
         timerStatus = false;
+        shieldBroke = true;
+        shieldSound.PlayShieldBreakSound();
 
         shieldHP.shieldHP = 0;
         shieldCooldown.fillAmount = 0.0f;
@@ -89,11 +117,15 @@ public class P2ShieldAction : MonoBehaviour
             cooldownTimer -= Time.deltaTime;
             shieldCooldown.fillAmount = cooldownTimer / cooldownTime;
             UpdateTimer(cooldownTimer);
+            if (cooldownTimer <= 0f || shieldHP.shieldHP <= 0)
+            {
+                RemoveShield();
+            }
         }
 
-        if (cooldownTimer <= 0f || shieldHP.shieldHP <= 0)
+        if (cooldownTimer <= 0f || shieldBroke)
         {
-            RemoveShield();
+            buttonCooldownTimer += Time.deltaTime;
         }
     }
 }

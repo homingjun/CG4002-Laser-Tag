@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
     private AudioSource grenadeSound;
     [SerializeField]
     private AudioSource shieldSound;
+    [SerializeField]
+    private AudioSource shieldBreakSound;
 
     public void PlayBulletSound()
     {
@@ -29,5 +31,10 @@ public class AudioManager : MonoBehaviour
     public void PlayShieldSound()
     {
         shieldSound.Play();
+    }
+
+    public void PlayShieldBreakSound()
+    {
+        shieldBreakSound.Play();
     }
 }

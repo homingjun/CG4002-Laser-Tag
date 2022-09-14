@@ -16,7 +16,7 @@ public class P2GrenadeAction : MonoBehaviour
     [SerializeField]
     private AudioManager grenadeSound;
     [SerializeField]
-    private Image hpBar;
+    private Image hpBar; //HP Bar
     public bool isClicked = false;
     private int currentShieldHP;
 

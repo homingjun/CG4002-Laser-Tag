@@ -35,11 +35,16 @@ public class P1ShootAction : MonoBehaviour
         {
             ammoNumber.numAmmo -= 1;
             if (playerFoundStatus.playerFound && opponentShieldHP.shieldHP > 0)
+            {
                 opponentShieldHP.shieldHP -= 10;
+                Instantiate(bulletHitEffect, temp, cam.rotation);
+            }
             else if (playerFoundStatus.playerFound)
+            {
                 opponentHP.HP -= 10;
+                Instantiate(bulletHitEffect, temp, cam.rotation);
+            }
             bulletSound.PlayBulletSound();
-            Instantiate(bulletHitEffect, temp, cam.rotation);
         }
     }
 }
