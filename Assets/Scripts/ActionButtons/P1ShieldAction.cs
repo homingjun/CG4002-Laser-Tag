@@ -50,18 +50,18 @@ public class P1ShieldAction : MonoBehaviour
     {
         if (!timerStatus && firstClick)
         {
-            TaskOnClick();
+            UseShield();
         }
         if (!timerStatus && buttonCooldownTimer >= 10f)
         {
-            TaskOnClick();
+            UseShield();
         }
     }
 
     /*
         Enable the shield timer components, set the shield hp and enable the shield bar.
     */
-    void TaskOnClick()
+    public void UseShield()
     {
         if (shieldNumber.numShield > 0)
         {

@@ -10,14 +10,14 @@ public class ScoreManager : MonoBehaviour
     private TMP_Text textPlayerOneScore;
     [SerializeField]
     private TMP_Text textPlayerTwoScore;
-    private int playerOneScore = 0;
-    private int playerTwoScore = 0;
-    [SerializeField]
+    public int playerOneScore = 0;
+    public int playerTwoScore = 0;
+    /*[SerializeField]
     private HPUIManager playerOneHP;
     [SerializeField]
     private HPUIManager playerTwoHP;
     [SerializeField]
-    private Image hpBar;
+    private Image hpBar;*/
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerOneHP.HP <= 0)
+        /*if (playerOneHP.HP <= 0)
         {
             playerTwoScore += 1;
             playerOneHP.HP = 100;
@@ -40,7 +40,7 @@ public class ScoreManager : MonoBehaviour
         {
             playerOneScore += 1;
             playerTwoHP.HP = 100;
-        }
+        }*/
         textPlayerOneScore.text = playerOneScore.ToString();
         textPlayerTwoScore.text = playerTwoScore.ToString();
     }

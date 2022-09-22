@@ -410,6 +410,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34175613}
   m_CullTransparentMesh: 1
+--- !u!1 &36235789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 36235791}
+  - component: {fileID: 36235790}
+  m_Layer: 0
+  m_Name: MQTT Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &36235790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36235789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce57aafaf0b7784ab9be27f5584c1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameController: Visualizer17
+  _eventSender: {fileID: 553474175}
+  p1UI: {fileID: 438103560}
+  p2UI: {fileID: 438103561}
+  p1Grenade: {fileID: 545301986}
+  p2Grenade: {fileID: 624444063}
+  p1Shield: {fileID: 1080212140}
+  p2Shield: {fileID: 848606683}
+--- !u!4 &36235791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36235789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 916.04297, y: 212.51572, z: 10.963516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &55529645
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,7 +1194,6 @@ GameObject:
   - component: {fileID: 275097151}
   - component: {fileID: 275097154}
   - component: {fileID: 275097153}
-  - component: {fileID: 275097155}
   m_Layer: 5
   m_Name: Text P2 Score
   m_TagString: Untagged
@@ -1269,23 +1320,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275097150}
   m_CullTransparentMesh: 1
---- !u!114 &275097155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275097150}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 661bb1d116d91914db94c0df59636f26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textPlayerOneScore: {fileID: 276646067}
-  textPlayerTwoScore: {fileID: 275097153}
-  playerOneHP: {fileID: 1501244542}
-  playerTwoHP: {fileID: 55529650}
-  hpBar: {fileID: 1927876435}
 --- !u!1 &276646063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,7 +1331,6 @@ GameObject:
   - component: {fileID: 276646064}
   - component: {fileID: 276646068}
   - component: {fileID: 276646067}
-  - component: {fileID: 276646069}
   m_Layer: 5
   m_Name: Text P1 Score
   m_TagString: Untagged
@@ -1422,23 +1455,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276646063}
   m_CullTransparentMesh: 1
---- !u!114 &276646069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276646063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 661bb1d116d91914db94c0df59636f26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textPlayerOneScore: {fileID: 276646067}
-  textPlayerTwoScore: {fileID: 275097153}
-  playerOneHP: {fileID: 1501244542}
-  playerTwoHP: {fileID: 55529650}
-  hpBar: {fileID: 1927876435}
 --- !u!1 &277060537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,6 +2003,141 @@ MonoBehaviour:
   bulletHitEffect: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc,
     type: 3}
   cam: {fileID: 878229905}
+--- !u!1 &354264591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 354264592}
+  - component: {fileID: 354264595}
+  - component: {fileID: 354264594}
+  m_Layer: 5
+  m_Name: MQTT Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &354264592
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354264591}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 438103558}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &354264594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354264591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: HELLO
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &354264595
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354264591}
+  m_CullTransparentMesh: 1
 --- !u!1 &438103554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,6 +2151,8 @@ GameObject:
   - component: {fileID: 438103556}
   - component: {fileID: 438103555}
   - component: {fileID: 438103559}
+  - component: {fileID: 438103560}
+  - component: {fileID: 438103561}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2087,6 +2240,7 @@ RectTransform:
   - {fileID: 1064142428}
   - {fileID: 616453335}
   - {fileID: 1828238232}
+  - {fileID: 354264592}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2112,6 +2266,44 @@ MonoBehaviour:
   shieldSound: {fileID: 1360800987}
   shieldBreakSound: {fileID: 1448487090}
   reloadSound: {fileID: 1357322310}
+--- !u!114 &438103560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438103554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db733b494ac60cf4491def4e391d401d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpCount: {fileID: 1501244542}
+  ammoCount: {fileID: 289690893}
+  grenadeCount: {fileID: 1265164948}
+  shieldHPCount: {fileID: 1448487089}
+  shieldCount: {fileID: 1448487089}
+  p1Score: {fileID: 616453336}
+  hpBar: {fileID: 1927876435}
+  shieldBar: {fileID: 34175615}
+--- !u!114 &438103561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438103554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e6b7d99f3208d4da9e69998e97ade2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpCount: {fileID: 55529650}
+  ammoCount: {fileID: 1210836231}
+  grenadeCount: {fileID: 1446577406}
+  shieldHPCount: {fileID: 536908335}
+  shieldCount: {fileID: 536908335}
+  p2Score: {fileID: 616453336}
 --- !u!1 &491803266
 GameObject:
   m_ObjectHideFlags: 0
@@ -2391,6 +2583,62 @@ MonoBehaviour:
   opponentShieldHP: {fileID: 536908335}
   grenadeSound: {fileID: 438103559}
   isClicked: 0
+--- !u!1 &553474174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 553474176}
+  - component: {fileID: 553474175}
+  m_Layer: 0
+  m_Name: MQTT Receiver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &553474175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553474174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d69f50ae1c56c4888e38130aba7d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brokerAddress: test.mosquitto.org
+  brokerPort: 1883
+  isEncrypted: 0
+  connectionDelay: 500
+  timeoutOnConnection: 30000
+  autoConnect: 1
+  mqttUserName: 
+  mqttPassword: 
+  topicSubscribe: visualizer17
+  topicPublish: 
+  messagePublish: 
+  autoTest: 0
+--- !u!4 &553474176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553474174}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 916.04297, y: 212.51572, z: 10.963516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &555860859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,6 +2921,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 616453335}
+  - component: {fileID: 616453336}
   m_Layer: 5
   m_Name: Scoreboard Items
   m_TagString: Untagged
@@ -2704,6 +2953,22 @@ RectTransform:
   m_AnchoredPosition: {x: -5.7, y: 175.1}
   m_SizeDelta: {x: -500, y: -340}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &616453336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616453334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661bb1d116d91914db94c0df59636f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textPlayerOneScore: {fileID: 276646067}
+  textPlayerTwoScore: {fileID: 275097153}
+  playerOneScore: 0
+  playerTwoScore: 0
 --- !u!1 &624444057
 GameObject:
   m_ObjectHideFlags: 0

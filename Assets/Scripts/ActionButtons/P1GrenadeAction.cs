@@ -25,10 +25,10 @@ public class P1GrenadeAction : MonoBehaviour
     void Start()
     {
         Button btnOne = GameObject.Find("Button Grenade P1").GetComponent<Button>();
-        btnOne.onClick.AddListener(TaskOnClick);
+        btnOne.onClick.AddListener(UseGrenade);
     }
 
-    void TaskOnClick()
+    public void UseGrenade()
     {
         if (grenadeNumber.numGrenades > 0)
         {
