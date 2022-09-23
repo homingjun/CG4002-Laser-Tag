@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Newtonsoft.Json.Linq;
 
 public class P2GrenadeAction : MonoBehaviour
 {
@@ -25,12 +27,12 @@ public class P2GrenadeAction : MonoBehaviour
     void Start()
     {
         Button btnOne = GameObject.Find("Button Grenade P2").GetComponent<Button>();
-        btnOne.onClick.AddListener(UseGrenade);
+        //btnOne.onClick.AddListener(UseGrenade);
     }
 
-    public void UseGrenade()
+    public void UseGrenade(JObject json)
     {
-        if (grenadeNumber.numGrenades > 0)
+        /*if (grenadeNumber.numGrenades > 0)
         {
             grenadeNumber.numGrenades -= 1;
             grenade.hasThrown = true;
@@ -47,6 +49,13 @@ public class P2GrenadeAction : MonoBehaviour
                 opponentHP.HP -= 30;
                 hpBar.fillAmount = opponentHP.HP / (float)100;
             }
+            grenadeSound.GrenadeDelay();
+        }*/
+
+        if (json["p2"]["grenade_hit"].ToString() == "yes")
+        {
+            grenade.hasThrown = true;
+            isClicked = true;
             grenadeSound.GrenadeDelay();
         }
     }

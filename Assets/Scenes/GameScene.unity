@@ -447,6 +447,8 @@ MonoBehaviour:
   p2Grenade: {fileID: 624444063}
   p1Shield: {fileID: 1080212140}
   p2Shield: {fileID: 848606683}
+  p1Shoot: {fileID: 314266033}
+  p2Shoot: {fileID: 1366181733}
 --- !u!4 &36235791
 Transform:
   m_ObjectHideFlags: 0
@@ -2286,6 +2288,7 @@ MonoBehaviour:
   p1Score: {fileID: 616453336}
   hpBar: {fileID: 1927876435}
   shieldBar: {fileID: 34175615}
+  shieldCooldown: {fileID: 2121985715}
 --- !u!114 &438103561
 MonoBehaviour:
   m_ObjectHideFlags: 0

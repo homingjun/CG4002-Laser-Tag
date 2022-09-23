@@ -19,6 +19,8 @@ public class P2UIManager : MonoBehaviour
     private ShieldUIManager shieldCount; //Text Shield Number Opponent
     [SerializeField]
     private ScoreManager p2Score; //Text P2 Score
+    [SerializeField]
+    private Image shieldCooldown; //Shield Fill Opponent
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,7 @@ public class P2UIManager : MonoBehaviour
 
         shieldHPCount.shieldHP = Convert.ToInt32(json["p2"]["shield_health"]);
         shieldCount.numShield = Convert.ToInt32(json["p2"]["num_shield"]);
+        shieldCooldown.fillAmount = Convert.ToUInt32(json["p2"]["shield_timer"]) / 10f;
 
         p2Score.playerTwoScore = Convert.ToInt32(json["p2"]["num_kills"]);
     }

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Newtonsoft.Json.Linq;
 
 public class P1ShootAction : MonoBehaviour
 {
@@ -24,14 +26,14 @@ public class P1ShootAction : MonoBehaviour
     void Start()
     {
         Button btn = GameObject.Find("Button Shoot P1").GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
+        //btn.onClick.AddListener(ShootBullet);
     }
 
-    void TaskOnClick()
+    public void ShootBullet(JObject json)
     {
         Vector3 temp = cam.position;
         temp.z = 5;
-        if (ammoNumber.numAmmo > 0)
+        /*if (ammoNumber.numAmmo > 0)
         {
             ammoNumber.numAmmo -= 1;
             if (playerFoundStatus.playerFound && opponentShieldHP.shieldHP > 0)
@@ -45,6 +47,12 @@ public class P1ShootAction : MonoBehaviour
                 Instantiate(bulletHitEffect, temp, cam.rotation);
             }
             bulletSound.PlayBulletSound();
+        }*/
+
+        if (Convert.ToInt32(json["p2"]["shield_health"]) <= 0)
+        {
+            Instantiate(bulletHitEffect, temp, cam.rotation);
         }
+        bulletSound.PlayBulletSound();
     }
 }

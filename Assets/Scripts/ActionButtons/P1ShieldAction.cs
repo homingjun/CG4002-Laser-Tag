@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Newtonsoft.Json.Linq;
 
 public class P1ShieldAction : MonoBehaviour
 {
@@ -30,6 +32,7 @@ public class P1ShieldAction : MonoBehaviour
     private float cooldownTime = 10f;
     private float cooldownTimer = 0.0f;
     private float buttonCooldownTimer = 0.0f;
+    private JObject shieldTimers;
 
     // Start is called before the first frame update
     void Start()
@@ -50,20 +53,20 @@ public class P1ShieldAction : MonoBehaviour
     {
         if (!timerStatus && firstClick)
         {
-            UseShield();
+            //UseShield();
         }
         if (!timerStatus && buttonCooldownTimer >= 10f)
         {
-            UseShield();
+            //UseShield();
         }
     }
 
     /*
         Enable the shield timer components, set the shield hp and enable the shield bar.
     */
-    public void UseShield()
+    public void UseShield(JObject json)
     {
-        if (shieldNumber.numShield > 0)
+        /*if (shieldNumber.numShield > 0)
         {
             timerStatus = true;
             firstClick = false;
@@ -80,6 +83,19 @@ public class P1ShieldAction : MonoBehaviour
             shieldMesh.enabled = true;
 
             cooldownTimer = cooldownTime;
+        }*/
+
+        shieldTimers = json;
+        if (Convert.ToInt32(json["p1"]["num_shield"]) > 0)
+        {
+            timerStatus = true;
+            firstClick = false;
+            shieldBroke = false;
+            shieldSound.PlayShieldSound();
+
+            shieldManagerPlayerOneShieldStatus.playerOneShieldStatus = true;
+            shieldManagerTimerStatus.enabled = true;
+            shieldMesh.enabled = true;
         }
     }
 
@@ -92,7 +108,7 @@ public class P1ShieldAction : MonoBehaviour
         shieldBroke = true;
         shieldSound.PlayShieldBreakSound();
 
-        shieldHP.shieldHP = 0;
+        //shieldHP.shieldHP = 0;
         shieldBar.fillAmount = 0.0f;
         shieldCooldown.fillAmount = 0.0f;
 
@@ -104,17 +120,17 @@ public class P1ShieldAction : MonoBehaviour
     /*
         Update the shield timer shown on the Visualiser in real time.
     */
-    void UpdateTimer(float currentTime)
+    /*void UpdateTimer(float currentTime)
     {
         currentTime += 1;
         float seconds = Mathf.FloorToInt(currentTime % 60);
         shieldTimer.shieldTimer = (int)seconds;
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
     {
-        if (timerStatus)
+        /*if (timerStatus)
         {
             cooldownTimer -= Time.deltaTime;
             shieldCooldown.fillAmount = cooldownTimer / cooldownTime;
@@ -128,6 +144,11 @@ public class P1ShieldAction : MonoBehaviour
         if (cooldownTimer <= 0f || shieldBroke)
         {
             buttonCooldownTimer += Time.deltaTime;
-        }
+        }*/
+
+        /*if (Convert.ToInt32(shieldTimers["p1"]["shield_timer"]) <= 0f || shieldHP.shieldHP <= 0)
+        {
+            RemoveShield();
+        }*/
     }
 }

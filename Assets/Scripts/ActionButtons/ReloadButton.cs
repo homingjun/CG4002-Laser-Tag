@@ -24,19 +24,23 @@ public class ReloadButton : MonoBehaviour
 
     void ReloadPlayerOne()
     {
-        if (ammoPlayerOne.numAmmo < 6)
+        /*if (ammoPlayerOne.numAmmo < 6)
         {
             ammoPlayerOne.numAmmo = 6;
             reloadSound.PlayReloadSound();
-        }
+        }*/
+
+        reloadSound.PlayReloadSound();
     }
 
     void ReloadPlayerTwo()
     {
-        if (ammoPlayerTwo.numAmmo < 6)
+        /*if (ammoPlayerTwo.numAmmo < 6)
         {
             ammoPlayerTwo.numAmmo = 6;
             reloadSound.PlayReloadSound();
-        }
+        }*/
+
+        reloadSound.PlayReloadSound();
     }
 }

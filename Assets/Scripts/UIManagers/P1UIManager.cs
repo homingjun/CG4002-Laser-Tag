@@ -23,6 +23,8 @@ public class P1UIManager : MonoBehaviour
     private Image hpBar; //HP Bar
     [SerializeField]
     private Image shieldBar; //Shield Bar
+    [SerializeField]
+    private Image shieldCooldown; //Shield Fill
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,7 @@ public class P1UIManager : MonoBehaviour
         shieldHPCount.shieldHP = Convert.ToInt32(json["p1"]["shield_health"]);
         shieldCount.numShield = Convert.ToInt32(json["p1"]["num_shield"]);
         shieldBar.fillAmount = shieldHPCount.shieldHP / (float)30;
+        shieldCooldown.fillAmount = Convert.ToUInt32(json["p1"]["shield_timer"]) / 10f;
 
         p1Score.playerOneScore = Convert.ToInt32(json["p1"]["num_kills"]);
     }

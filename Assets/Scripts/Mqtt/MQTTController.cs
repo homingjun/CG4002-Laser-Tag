@@ -22,6 +22,10 @@ public class MQTTController : MonoBehaviour
     private P1ShieldAction p1Shield;
     [SerializeField]
     private P2ShieldAction p2Shield;
+    [SerializeField]
+    private P1ShootAction p1Shoot;
+    [SerializeField]
+    private P2ShootAction p2Shoot;
 
     void Start()
     {
@@ -39,15 +43,23 @@ public class MQTTController : MonoBehaviour
         }
         if (json["p2"]["action"].ToString() == "grenade")
         {
-            p2Grenade.UseGrenade();
+            p2Grenade.UseGrenade(json);
         }
         if (json["p1"]["action"].ToString() == "shield")
         {
-            p1Shield.UseShield();
+            p1Shield.UseShield(json);
         }
         if (json["p2"]["action"].ToString() == "shield")
         {
             p2Shield.UseShield();
+        }
+        if (json["p1"]["bullet_hit"].ToString() == "yes")
+        {
+            p1Shoot.ShootBullet(json);
+        }
+        if (json["p2"]["bullet_hit"].ToString() == "yes")
+        {
+            p2Shoot.ShootBullet(json);
         }
 
         p1UI.UpdateUI(json);

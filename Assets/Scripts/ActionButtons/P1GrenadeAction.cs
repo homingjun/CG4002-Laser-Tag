@@ -30,7 +30,7 @@ public class P1GrenadeAction : MonoBehaviour
 
     public void UseGrenade()
     {
-        if (grenadeNumber.numGrenades > 0)
+        /*if (grenadeNumber.numGrenades > 0)
         {
             grenadeNumber.numGrenades -= 1;
             grenade.hasThrown = true;
@@ -45,6 +45,14 @@ public class P1GrenadeAction : MonoBehaviour
             else if (playerFoundStatus.playerFound)
                 opponentHP.HP -= 30;
             grenadeSound.GrenadeDelay();
+        }*/
+
+        grenade.hasThrown = true;
+        isClicked = true;
+        if (playerFoundStatus.playerFound)
+        {
+            //Send grenade hit msg to ultra96
         }
+        grenadeSound.GrenadeDelay();
     }
 }
