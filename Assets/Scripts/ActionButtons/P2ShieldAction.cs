@@ -52,20 +52,20 @@ public class P2ShieldAction : MonoBehaviour
     {
         if (!timerStatus && firstClick)
         {
-            UseShield();
+            //UseShield();
         }
         if (!timerStatus && buttonCooldownTimer >= 10f)
         {
-            UseShield();
+            //UseShield();
         }
     }
 
     /*
         Enable the shield timer components, set the shield hp and enable the shield bar.
     */
-    public void UseShield()
+    public void UseShield(JObject json)
     {
-        if (shieldNumber.numShield > 0 && playerFoundStatus.playerFound)
+        /*if (shieldNumber.numShield > 0 && playerFoundStatus.playerFound)
         {
             timerStatus = true;
             firstClick = false;
@@ -81,19 +81,31 @@ public class P2ShieldAction : MonoBehaviour
             shieldMesh.enabled = true;
 
             cooldownTimer = cooldownTime;
+        }*/
+
+        if (Convert.ToInt32(json["p2"]["num_shield"]) > 0)
+        {
+            timerStatus = true;
+            firstClick = false;
+            shieldBroke = false;
+            shieldSound.PlayShieldSound();
+
+            shieldManagerPlayerTwoShieldStatus.playerTwoShieldStatus = true;
+            shieldManagerTimerStatus.enabled = true;
+            shieldMesh.enabled = true;
         }
     }
 
     /*
         Set the shield hp back to 0, remove the shield bar and disable the timer components.
     */
-    void RemoveShield()
+    public void RemoveShield()
     {
         timerStatus = false;
         shieldBroke = true;
         shieldSound.PlayShieldBreakSound();
 
-        shieldHP.shieldHP = 0;
+        //shieldHP.shieldHP = 0;
         shieldCooldown.fillAmount = 0.0f;
 
         shieldManagerTimerStatus.enabled = false;
@@ -114,7 +126,7 @@ public class P2ShieldAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timerStatus)
+        /*if (timerStatus)
         {
             cooldownTimer -= Time.deltaTime;
             shieldCooldown.fillAmount = cooldownTimer / cooldownTime;
@@ -128,6 +140,6 @@ public class P2ShieldAction : MonoBehaviour
         if (cooldownTimer <= 0f || shieldBroke)
         {
             buttonCooldownTimer += Time.deltaTime;
-        }
+        }*/
     }
 }

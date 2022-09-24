@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,14 +46,24 @@ public class MQTTController : MonoBehaviour
         {
             p2Grenade.UseGrenade(json);
         }
+
         if (json["p1"]["action"].ToString() == "shield")
         {
             p1Shield.UseShield(json);
         }
         if (json["p2"]["action"].ToString() == "shield")
         {
-            p2Shield.UseShield();
+            p2Shield.UseShield(json);
         }
+        if (Convert.ToInt32(json["p1"]["shield_timer"]) <= 0 || Convert.ToInt32(json["p1"]["shield_health"]) <= 0)
+        {
+            p1Shield.RemoveShield();
+        }
+        if (Convert.ToInt32(json["p2"]["shield_timer"]) <= 0 || Convert.ToInt32(json["p2"]["shield_health"]) <= 0)
+        {
+            p1Shield.RemoveShield();
+        }
+
         if (json["p1"]["bullet_hit"].ToString() == "yes")
         {
             p1Shoot.ShootBullet(json);

@@ -85,13 +85,13 @@ public class P1ShieldAction : MonoBehaviour
             cooldownTimer = cooldownTime;
         }*/
 
-        shieldTimers = json;
         if (Convert.ToInt32(json["p1"]["num_shield"]) > 0)
         {
             timerStatus = true;
             firstClick = false;
             shieldBroke = false;
             shieldSound.PlayShieldSound();
+            //Debug.Log("shielded");
 
             shieldManagerPlayerOneShieldStatus.playerOneShieldStatus = true;
             shieldManagerTimerStatus.enabled = true;
@@ -102,7 +102,7 @@ public class P1ShieldAction : MonoBehaviour
     /*
         Set the shield hp back to 0, remove the shield bar and disable the timer components.
     */
-    void RemoveShield()
+    public void RemoveShield()
     {
         timerStatus = false;
         shieldBroke = true;

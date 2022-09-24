@@ -18,6 +18,8 @@ public class P1UIManager : MonoBehaviour
     [SerializeField]
     private ShieldUIManager shieldCount; //Text Shield Number
     [SerializeField]
+    private ShieldUIManager shieldTimer; //Text Shield Timer
+    [SerializeField]
     private ScoreManager p1Score; //Text P1 Score
     [SerializeField]
     private Image hpBar; //HP Bar
@@ -45,6 +47,7 @@ public class P1UIManager : MonoBehaviour
 
         shieldHPCount.shieldHP = Convert.ToInt32(json["p1"]["shield_health"]);
         shieldCount.numShield = Convert.ToInt32(json["p1"]["num_shield"]);
+        shieldTimer.shieldTimer = Convert.ToInt32(json["p1"]["shield_timer"]);
         shieldBar.fillAmount = shieldHPCount.shieldHP / (float)30;
         shieldCooldown.fillAmount = Convert.ToUInt32(json["p1"]["shield_timer"]) / 10f;
 
