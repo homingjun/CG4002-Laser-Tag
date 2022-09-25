@@ -37,11 +37,11 @@ public class P1ShieldAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Button btn = GameObject.Find("Button Shield P1").GetComponent<Button>();
+        //Button btn = GameObject.Find("Shield P1").GetComponent<Button>();
 
         shieldCooldown.fillAmount = 0.0f;
         shieldBar.fillAmount = 0.0f;
-        btn.onClick.AddListener(ShieldStatusChecker);
+        //btn.onClick.AddListener(ShieldStatusChecker);
     }
 
     /*

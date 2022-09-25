@@ -19,7 +19,6 @@ public class MQTTReceiver : M2MqttUnityClient
 
     //using C# Property GET/SET and event listener to reduce Update overhead in the controlled objects
     private string m_msg;
-    private string prev_msg;
 
     public string msg
     {
@@ -31,9 +30,8 @@ public class MQTTReceiver : M2MqttUnityClient
         {
             if (m_msg == value) return;
             m_msg = value;
-            if (OnMessageArrived != null && prev_msg != m_msg)
+            if (OnMessageArrived != null)
             {
-                prev_msg = m_msg;
                 OnMessageArrived(m_msg);
             }
         }
@@ -70,7 +68,7 @@ public class MQTTReceiver : M2MqttUnityClient
     public void Publish()
     {
         client.Publish(topicPublish, System.Text.Encoding.UTF8.GetBytes(messagePublish), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
-        Debug.Log("Test message published");
+        Debug.Log("Test message: " + messagePublish + " topic: " + topicPublish + " published");
     }
     public void SetEncrypted(bool isEncrypted)
     {

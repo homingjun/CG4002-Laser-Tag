@@ -25,7 +25,7 @@ public class P1ShootAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Button btn = GameObject.Find("Button Shoot P1").GetComponent<Button>();
+        //Button btn = GameObject.Find("Shoot P1").GetComponent<Button>();
         //btn.onClick.AddListener(ShootBullet);
     }
 

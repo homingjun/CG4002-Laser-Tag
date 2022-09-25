@@ -17,16 +17,18 @@ public class P1GrenadeAction : MonoBehaviour
     private ShieldUIManager opponentShieldHP; //Text Shield Opponent
     [SerializeField]
     private AudioManager grenadeSound;
+    [SerializeField]
+    private MQTTReceiver mqttReceiver;
     public bool isClicked = false;
     private int currentShieldHP;
 
 
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
-        Button btnOne = GameObject.Find("Button Grenade P1").GetComponent<Button>();
+        Button btnOne = GameObject.Find("Grenade P1").GetComponent<Button>();
         btnOne.onClick.AddListener(UseGrenade);
-    }
+    }*/
 
     public void UseGrenade()
     {
@@ -49,9 +51,12 @@ public class P1GrenadeAction : MonoBehaviour
 
         grenade.hasThrown = true;
         isClicked = true;
-        if (playerFoundStatus.playerFound)
+        if (!playerFoundStatus.playerFound)
         {
             //Send grenade hit msg to ultra96
+            mqttReceiver.topicPublish = "visualizer17";
+            mqttReceiver.messagePublish = "{\"p1\":{\"grenade_hit\":\"yes\"}}";
+            mqttReceiver.Publish();
         }
         grenadeSound.GrenadeDelay();
     }

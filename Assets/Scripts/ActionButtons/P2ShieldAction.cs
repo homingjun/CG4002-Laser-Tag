@@ -36,11 +36,11 @@ public class P2ShieldAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Button btn = GameObject.Find("Button Shield P2").GetComponent<Button>();
+        //Button btn = GameObject.Find("Shield P2").GetComponent<Button>();
 
         shieldCooldown.fillAmount = 0.0f;
 
-        btn.onClick.AddListener(ShieldStatusChecker);
+        //btn.onClick.AddListener(ShieldStatusChecker);
     }
 
     /*
@@ -83,7 +83,7 @@ public class P2ShieldAction : MonoBehaviour
             cooldownTimer = cooldownTime;
         }*/
 
-        if (Convert.ToInt32(json["p2"]["num_shield"]) > 0)
+        if (Convert.ToInt32(json["p2"]["num_shield"]) > 0 && playerFoundStatus.playerFound)
         {
             timerStatus = true;
             firstClick = false;

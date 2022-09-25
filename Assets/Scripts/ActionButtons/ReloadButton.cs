@@ -14,13 +14,13 @@ public class ReloadButton : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
-        Button btnOne = GameObject.Find("Button Reload P1").GetComponent<Button>();
+        Button btnOne = GameObject.Find("Reload P1").GetComponent<Button>();
         btnOne.onClick.AddListener(ReloadPlayerOne);
-        Button btnTwo = GameObject.Find("Button Reload P2").GetComponent<Button>();
+        Button btnTwo = GameObject.Find("Reload P2").GetComponent<Button>();
         btnTwo.onClick.AddListener(ReloadPlayerTwo);
-    }
+    }*/
 
     void ReloadPlayerOne()
     {

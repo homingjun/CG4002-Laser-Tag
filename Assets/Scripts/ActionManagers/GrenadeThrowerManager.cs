@@ -20,14 +20,14 @@ public class GrenadeThrowerManager : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
-        grenadeButtonPlayerOne = GameObject.Find("Button Grenade P1").GetComponent<P1GrenadeAction>();
+        grenadeButtonPlayerOne = GameObject.Find("Grenade P1").GetComponent<P1GrenadeAction>();
         //Debug.Log(clicked.isClicked);
         if (grenadeButtonPlayerOne.isClicked)
         {
             ThrowGrenadeViewOne();
         }
 
-        grenadeButtonPlayerTwo = GameObject.Find("Button Grenade P2").GetComponent<P2GrenadeAction>();
+        grenadeButtonPlayerTwo = GameObject.Find("Grenade P2").GetComponent<P2GrenadeAction>();
         //Debug.Log(clicked.isClicked);
         if (grenadeButtonPlayerTwo.isClicked)
         {

@@ -2005,6 +2005,7 @@ MonoBehaviour:
   opponentHP: {fileID: 55529650}
   opponentShieldHP: {fileID: 536908335}
   grenadeSound: {fileID: 438103559}
+  mqttReceiver: {fileID: 553474175}
   isClicked: 0
 --- !u!1 &553474174
 GameObject:

@@ -26,7 +26,7 @@ public class P2GrenadeAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Button btnOne = GameObject.Find("Button Grenade P2").GetComponent<Button>();
+        //Button btnOne = GameObject.Find("Grenade P2").GetComponent<Button>();
         //btnOne.onClick.AddListener(UseGrenade);
     }
 
