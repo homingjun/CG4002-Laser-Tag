@@ -89,7 +89,7 @@ public class P2ShieldAction : MonoBehaviour
 
             shieldManagerPlayerTwoShieldStatus.playerTwoShieldStatus = true;
             shieldManagerTimerStatus.enabled = true;
-            //shieldMesh.enabled = true;
+            shieldMesh.enabled = true;
         }
     }
 

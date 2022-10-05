@@ -29,6 +29,8 @@ public class MQTTController : MonoBehaviour
     [SerializeField]
     private P2ShootAction p2Shoot;
     [SerializeField]
+    private ReloadButton reload;
+    [SerializeField]
     private GameOverUIManager winner;
 
     void Start()
@@ -40,6 +42,8 @@ public class MQTTController : MonoBehaviour
     {
         json = JObject.Parse(newMsg);
 
+
+        //Grenading
         if (json["p1"]["action"].ToString() == "grenade")
         {
             p1Grenade.UseGrenade();
@@ -49,6 +53,8 @@ public class MQTTController : MonoBehaviour
             p2Grenade.UseGrenade(json);
         }
 
+
+        //Shielding
         if (json["p1"]["action"].ToString() == "shield")
         {
             p1Shield.UseShield(json);
@@ -63,9 +69,11 @@ public class MQTTController : MonoBehaviour
         }
         if (json["p2"]["shield_broke"].ToString() == "yes")
         {
-            p1Shield.RemoveShield();
+            p2Shield.RemoveShield();
         }
 
+
+        //Shooting
         if (json["p1"]["bullet_hit"].ToString() == "yes")
         {
             p1Shoot.ShootBullet(json);
@@ -74,7 +82,21 @@ public class MQTTController : MonoBehaviour
         {
             p2Shoot.ShootBullet(json);
         }
-        if (json["game"]["game_over"].ToString() == "yes")
+
+
+        //Reload
+        if (json["p1"]["action"].ToString() == "reload")
+        {
+            reload.ReloadPlayerOne();
+        }
+        if (json["p2"]["action"].ToString() == "reload")
+        {
+            reload.ReloadPlayerTwo();
+        }
+
+
+        //End the game
+        if (json["p1"]["action"].ToString() == "logout" || json["p2"]["action"].ToString() == "logout")
         {
             winner.GameWinner(json);
         }

@@ -51,12 +51,14 @@ public class P2GrenadeAction : MonoBehaviour
             }
             grenadeSound.GrenadeDelay();
         }*/
-
-        if (json["p2"]["grenade_hit"].ToString() == "yes")
+        grenade.hasThrown = true;
+        isClicked = true;
+        grenadeSound.GrenadeDelay();
+        /*if (json["p2"]["grenade_hit"].ToString() == "yes")
         {
             grenade.hasThrown = true;
             isClicked = true;
             grenadeSound.GrenadeDelay();
-        }
+        }*/
     }
 }

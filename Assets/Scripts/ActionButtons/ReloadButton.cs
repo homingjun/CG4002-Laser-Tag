@@ -22,7 +22,7 @@ public class ReloadButton : MonoBehaviour
         btnTwo.onClick.AddListener(ReloadPlayerTwo);
     }*/
 
-    void ReloadPlayerOne()
+    public void ReloadPlayerOne()
     {
         /*if (ammoPlayerOne.numAmmo < 6)
         {
@@ -33,7 +33,7 @@ public class ReloadButton : MonoBehaviour
         reloadSound.PlayReloadSound();
     }
 
-    void ReloadPlayerTwo()
+    public void ReloadPlayerTwo()
     {
         /*if (ammoPlayerTwo.numAmmo < 6)
         {
