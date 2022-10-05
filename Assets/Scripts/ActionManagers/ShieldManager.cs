@@ -153,7 +153,7 @@ public class ShieldManager : MonoBehaviour
     protected virtual void OnTrackingFound()
     {
         playerFound = true;
-        /*if (mObserverBehaviour)
+        if (mObserverBehaviour && playerTwoShieldStatus)
         {
             var rendererComponents = mObserverBehaviour.GetComponentsInChildren<Renderer>(true);
             var colliderComponents = mObserverBehaviour.GetComponentsInChildren<Collider>(true);
@@ -161,16 +161,16 @@ public class ShieldManager : MonoBehaviour
 
             // Enable rendering:
             foreach (var component in rendererComponents)
-                component.enabled = false;
+                component.enabled = true;
 
-            // Enable colliders:
-            foreach (var component in colliderComponents)
-                component.enabled = false;
+            // // Enable colliders:
+            // foreach (var component in colliderComponents)
+            //     component.enabled = true;
 
             // Enable canvas':
             foreach (var component in canvasComponents)
-                component.enabled = false;
-        }*/
+                component.enabled = true;
+        }
 
     }
 

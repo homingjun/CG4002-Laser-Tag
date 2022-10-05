@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using Newtonsoft.Json.Linq;
 
@@ -27,6 +28,8 @@ public class MQTTController : MonoBehaviour
     private P1ShootAction p1Shoot;
     [SerializeField]
     private P2ShootAction p2Shoot;
+    [SerializeField]
+    private GameOverUIManager winner;
 
     void Start()
     {
@@ -40,7 +43,6 @@ public class MQTTController : MonoBehaviour
         if (json["p1"]["action"].ToString() == "grenade")
         {
             p1Grenade.UseGrenade();
-            Debug.Log("Clicked");
         }
         if (json["p2"]["action"].ToString() == "grenade")
         {
@@ -55,11 +57,11 @@ public class MQTTController : MonoBehaviour
         {
             p2Shield.UseShield(json);
         }
-        if (Convert.ToInt32(json["p1"]["shield_timer"]) <= 0 || Convert.ToInt32(json["p1"]["shield_health"]) <= 0)
+        if (json["p1"]["shield_broke"].ToString() == "yes")
         {
             p1Shield.RemoveShield();
         }
-        if (Convert.ToInt32(json["p2"]["shield_timer"]) <= 0 || Convert.ToInt32(json["p2"]["shield_health"]) <= 0)
+        if (json["p2"]["shield_broke"].ToString() == "yes")
         {
             p1Shield.RemoveShield();
         }
@@ -71,6 +73,10 @@ public class MQTTController : MonoBehaviour
         if (json["p2"]["bullet_hit"].ToString() == "yes")
         {
             p2Shoot.ShootBullet(json);
+        }
+        if (json["game"]["game_over"].ToString() == "yes")
+        {
+            winner.GameWinner(json);
         }
 
         p1UI.UpdateUI(json);

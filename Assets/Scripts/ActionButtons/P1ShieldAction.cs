@@ -28,9 +28,9 @@ public class P1ShieldAction : MonoBehaviour
     private MeshRenderer shieldMesh; //Shield
     private bool timerStatus = false;
     private bool firstClick = true;
-    private bool shieldBroke = false;
-    private float cooldownTime = 10f;
-    private float cooldownTimer = 0.0f;
+    // private bool shieldBroke = false;
+    // private float cooldownTime = 10f;
+    // private float cooldownTimer = 0.0f;
     private float buttonCooldownTimer = 0.0f;
     private JObject shieldTimers;
 
@@ -85,11 +85,8 @@ public class P1ShieldAction : MonoBehaviour
             cooldownTimer = cooldownTime;
         }*/
 
-        if (Convert.ToInt32(json["p1"]["num_shield"]) > 0)
+        if (Convert.ToInt32(json["p1"]["num_shield"]) > 0 && Convert.ToInt32(json["p1"]["shield_timer"]) == 10)
         {
-            timerStatus = true;
-            firstClick = false;
-            shieldBroke = false;
             shieldSound.PlayShieldSound();
             //Debug.Log("shielded");
 
@@ -104,8 +101,8 @@ public class P1ShieldAction : MonoBehaviour
     */
     public void RemoveShield()
     {
-        timerStatus = false;
-        shieldBroke = true;
+        //timerStatus = false;
+        //shieldBroke = true;
         shieldSound.PlayShieldBreakSound();
 
         //shieldHP.shieldHP = 0;

@@ -28,9 +28,9 @@ public class P2ShieldAction : MonoBehaviour
     private ShieldManager playerFoundStatus; //ImageTarget
     private bool timerStatus = false;
     private bool firstClick = true;
-    private bool shieldBroke = false;
-    private float cooldownTime = 10f;
-    private float cooldownTimer = 0.0f;
+    // private bool shieldBroke = false;
+    // private float cooldownTime = 10f;
+    // private float cooldownTimer = 0.0f;
     private float buttonCooldownTimer = 0.0f;
 
     // Start is called before the first frame update
@@ -83,16 +83,13 @@ public class P2ShieldAction : MonoBehaviour
             cooldownTimer = cooldownTime;
         }*/
 
-        if (Convert.ToInt32(json["p2"]["num_shield"]) > 0 && playerFoundStatus.playerFound)
+        if (Convert.ToInt32(json["p2"]["num_shield"]) > 0 && Convert.ToInt32(json["p2"]["shield_timer"]) == 10)
         {
-            timerStatus = true;
-            firstClick = false;
-            shieldBroke = false;
             shieldSound.PlayShieldSound();
 
             shieldManagerPlayerTwoShieldStatus.playerTwoShieldStatus = true;
             shieldManagerTimerStatus.enabled = true;
-            shieldMesh.enabled = true;
+            //shieldMesh.enabled = true;
         }
     }
 
@@ -101,8 +98,8 @@ public class P2ShieldAction : MonoBehaviour
     */
     public void RemoveShield()
     {
-        timerStatus = false;
-        shieldBroke = true;
+        //timerStatus = false;
+        //shieldBroke = true;
         shieldSound.PlayShieldBreakSound();
 
         //shieldHP.shieldHP = 0;

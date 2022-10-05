@@ -51,10 +51,10 @@ public class P1GrenadeAction : MonoBehaviour
 
         grenade.hasThrown = true;
         isClicked = true;
-        if (!playerFoundStatus.playerFound)
+        if (playerFoundStatus.playerFound)
         {
             //Send grenade hit msg to ultra96
-            mqttReceiver.topicPublish = "visualizer17";
+            mqttReceiver.topicPublish = "grenade17";
             mqttReceiver.messagePublish = "{\"p1\":{\"grenade_hit\":\"yes\"}}";
             mqttReceiver.Publish();
         }
