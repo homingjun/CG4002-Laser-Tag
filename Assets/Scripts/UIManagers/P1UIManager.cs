@@ -47,10 +47,10 @@ public class P1UIManager : MonoBehaviour
 
         shieldHPCount.shieldHP = Convert.ToInt32(json["p1"]["shield_health"]);
         shieldCount.numShield = Convert.ToInt32(json["p1"]["num_shield"]);
-        shieldTimer.shieldTimer = Convert.ToInt32(json["p1"]["shield_timer"]);
+        shieldTimer.shieldTimer = Convert.ToInt32(json["p1"]["shield_time"]);
         shieldBar.fillAmount = shieldHPCount.shieldHP / (float)30;
-        shieldCooldown.fillAmount = Convert.ToUInt32(json["p1"]["shield_timer"]) / 10f;
+        shieldCooldown.fillAmount = Convert.ToUInt32(json["p1"]["shield_time"]) / 10f;
 
-        p1Score.playerOneScore = Convert.ToInt32(json["p1"]["num_kills"]);
+        p1Score.playerOneScore = Convert.ToInt32(json["p2"]["num_deaths"]);
     }
 }

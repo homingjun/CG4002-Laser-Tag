@@ -46,7 +46,7 @@ public class P2ShootAction : MonoBehaviour
             Instantiate(bulletHitEffect, temp, cam.rotation);
         }*/
 
-        if (Convert.ToInt32(json["p1"]["shield_health"]) <= 0)
+        if (Convert.ToInt32(json["p1"]["shield_health"]) <= 0 && json["p2"]["bullet_hit"].ToString() == "yes")
         {
             Instantiate(bulletHitEffect, temp, cam.rotation);
         }

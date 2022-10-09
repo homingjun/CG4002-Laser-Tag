@@ -42,7 +42,17 @@ public class MQTTController : MonoBehaviour
     {
         json = JObject.Parse(newMsg);
 
+        //Shooting
+        if (json["p1"]["action"].ToString() == "shoot")
+        {
+            p1Shoot.ShootBullet(json);
+        }
+        if (json["p2"]["action"].ToString() == "shoot")
+        {
+            p2Shoot.ShootBullet(json);
+        }
 
+        
         //Grenading
         if (json["p1"]["action"].ToString() == "grenade")
         {
@@ -70,17 +80,6 @@ public class MQTTController : MonoBehaviour
         if (json["p2"]["shield_broke"].ToString() == "yes")
         {
             p2Shield.RemoveShield();
-        }
-
-
-        //Shooting
-        if (json["p1"]["bullet_hit"].ToString() == "yes")
-        {
-            p1Shoot.ShootBullet(json);
-        }
-        if (json["p2"]["bullet_hit"].ToString() == "yes")
-        {
-            p2Shoot.ShootBullet(json);
         }
 
 

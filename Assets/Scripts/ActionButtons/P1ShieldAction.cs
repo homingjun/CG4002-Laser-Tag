@@ -85,7 +85,7 @@ public class P1ShieldAction : MonoBehaviour
             cooldownTimer = cooldownTime;
         }*/
 
-        if (Convert.ToInt32(json["p1"]["num_shield"]) > 0 && Convert.ToInt32(json["p1"]["shield_timer"]) == 10)
+        if (Convert.ToInt32(json["p1"]["num_shield"]) > 0 && Convert.ToInt32(json["p1"]["shield_time"]) == 10)
         {
             shieldSound.PlayShieldSound();
             //Debug.Log("shielded");

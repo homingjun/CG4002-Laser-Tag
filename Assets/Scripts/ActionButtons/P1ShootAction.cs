@@ -49,7 +49,7 @@ public class P1ShootAction : MonoBehaviour
             bulletSound.PlayBulletSound();
         }*/
 
-        if (Convert.ToInt32(json["p2"]["shield_health"]) <= 0)
+        if (Convert.ToInt32(json["p2"]["shield_health"]) <= 0 && json["p1"]["bullet_hit"].ToString() == "yes")
         {
             Instantiate(bulletHitEffect, temp, cam.rotation);
         }
