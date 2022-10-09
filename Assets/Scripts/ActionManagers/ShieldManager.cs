@@ -36,6 +36,8 @@ public class ShieldManager : MonoBehaviour
     public bool playerOneShieldStatus = false;
     public bool playerTwoShieldStatus = false;
     public bool playerFound = false;
+    [SerializeField]
+    private TMP_Text opponentFound;
 
     protected virtual void Start()
     {
@@ -153,6 +155,7 @@ public class ShieldManager : MonoBehaviour
     protected virtual void OnTrackingFound()
     {
         playerFound = true;
+        opponentFound.text = "Opponent Detected!";
         if (mObserverBehaviour && playerTwoShieldStatus)
         {
             var rendererComponents = mObserverBehaviour.GetComponentsInChildren<Renderer>(true);
@@ -177,6 +180,7 @@ public class ShieldManager : MonoBehaviour
     protected virtual void OnTrackingLost()
     {
         playerFound = false;
+        opponentFound.text = "";
         if (mObserverBehaviour)
         {
             var rendererComponents = mObserverBehaviour.GetComponentsInChildren<Renderer>(true);
