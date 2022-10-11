@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -766,7 +766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &110021932
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2727,13 +2727,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreviewVisible: 1
   RuntimeOcclusion: 0
-  mTrackableName: bigqr
+  mTrackableName: bigqr_rotated1665471496
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/LaserTag.xml
-  mAspectRatio: 1.48927
+  mAspectRatio: 0.668221
   mImageTargetType: 0
   mWidth: 1
-  mHeight: 1.48927
+  mHeight: 0.668221
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
@@ -2811,7 +2811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 690235659}
   mHiddenRoot: {fileID: 0}
-  mTargetName: bigqr
+  mTargetName: bigqr_rotated1665471496
   mDatasetName: Vuforia/LaserTag.xml
   mCastedBehaviour: {fileID: 690235659}
   mMeshFilter: {fileID: 0}
@@ -3758,7 +3758,7 @@ MonoBehaviour:
   m_Script: {fileID: -1826476478, guid: 1e108ae5f2133934f948edded555f03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mWorldCenterMode: 1
+  mWorldCenterMode: 2
   mWorldCenter: {fileID: 0}
 --- !u!81 &878229903
 AudioListener:
@@ -3842,7 +3842,7 @@ MonoBehaviour:
   cam: {fileID: 878229905}
   throwForce: 40
   throwHeight: 0.15
-  throwHeightOpp: 0.65
+  throwHeightOpp: 0.15
   grenadePrefab: {fileID: 2295132077347308193, guid: 4c6775170e16e4c478c5b13ed7ff2024,
     type: 3}
 --- !u!1001 &878936046
