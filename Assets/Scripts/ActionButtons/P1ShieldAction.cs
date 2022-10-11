@@ -27,10 +27,10 @@ public class P1ShieldAction : MonoBehaviour
     [SerializeField]
     private MeshRenderer shieldMesh; //Shield
     private bool timerStatus = false;
-    private bool firstClick = true;
+    //private bool firstClick = true;
     // private bool shieldBroke = false;
-    // private float cooldownTime = 10f;
-    // private float cooldownTimer = 0.0f;
+    private float cooldownTime = 10f;
+    private float cooldownTimer = 0.0f;
     private float buttonCooldownTimer = 0.0f;
     private JObject shieldTimers;
 
@@ -49,7 +49,7 @@ public class P1ShieldAction : MonoBehaviour
         If it has not, activate the shield.
         If it has, ensure that 10s has passed before the shield can be used again.
     */
-    void ShieldStatusChecker()
+    /*void ShieldStatusChecker()
     {
         if (!timerStatus && firstClick)
         {
@@ -59,7 +59,7 @@ public class P1ShieldAction : MonoBehaviour
         {
             //UseShield();
         }
-    }
+    }*/
 
     /*
         Enable the shield timer components, set the shield hp and enable the shield bar.
@@ -85,11 +85,13 @@ public class P1ShieldAction : MonoBehaviour
             cooldownTimer = cooldownTime;
         }*/
 
-        if (Convert.ToInt32(json["p1"]["num_shield"]) > 0 && Convert.ToInt32(json["p1"]["shield_time"]) == 10)
+        if (Convert.ToInt32(json["p1"]["num_shield"]) > 0)
         {
             shieldSound.PlayShieldSound();
-            //Debug.Log("shielded");
 
+            timerStatus = true;
+            cooldownTimer = Convert.ToInt32(json["p1"]["shield_time"]);        
+   
             shieldManagerPlayerOneShieldStatus.playerOneShieldStatus = true;
             shieldManagerTimerStatus.enabled = true;
             shieldMesh.enabled = true;
@@ -101,8 +103,7 @@ public class P1ShieldAction : MonoBehaviour
     */
     public void RemoveShield()
     {
-        //timerStatus = false;
-        //shieldBroke = true;
+        timerStatus = false;
         shieldSound.PlayShieldBreakSound();
 
         //shieldHP.shieldHP = 0;
@@ -117,17 +118,17 @@ public class P1ShieldAction : MonoBehaviour
     /*
         Update the shield timer shown on the Visualiser in real time.
     */
-    /*void UpdateTimer(float currentTime)
+    void UpdateTimer(float currentTime)
     {
         currentTime += 1;
         float seconds = Mathf.FloorToInt(currentTime % 60);
         shieldTimer.shieldTimer = (int)seconds;
-    }*/
+    }
 
     // Update is called once per frame
     void Update()
     {
-        /*if (timerStatus)
+        if (timerStatus && cooldownTimer > 0)
         {
             cooldownTimer -= Time.deltaTime;
             shieldCooldown.fillAmount = cooldownTimer / cooldownTime;
@@ -138,7 +139,7 @@ public class P1ShieldAction : MonoBehaviour
             }
         }
 
-        if (cooldownTimer <= 0f || shieldBroke)
+        /*if (cooldownTimer <= 0f || shieldBroke)
         {
             buttonCooldownTimer += Time.deltaTime;
         }*/
