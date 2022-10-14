@@ -4,6 +4,7 @@ using UnityEngine;
 using M2MqttUnity;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
+using TMPro;
 
 public class MQTTReceiver : M2MqttUnityClient
 {
@@ -19,6 +20,9 @@ public class MQTTReceiver : M2MqttUnityClient
 
     //using C# Property GET/SET and event listener to reduce Update overhead in the controlled objects
     private string m_msg;
+
+    [SerializeField]
+    private TMP_Text textConnected;
 
     public string msg
     {
@@ -84,6 +88,8 @@ public class MQTTReceiver : M2MqttUnityClient
     {
         base.OnConnected();
         isConnected = true;
+        textConnected.text = "Connected!";
+        textConnected.color = new Color32(0, 255, 45, 255);
 
         if (autoTest)
         {
@@ -94,17 +100,26 @@ public class MQTTReceiver : M2MqttUnityClient
     protected override void OnConnectionFailed(string errorMessage)
     {
         Debug.Log("CONNECTION FAILED! " + errorMessage);
+        
+        textConnected.text = "Connection Failed!";
+        textConnected.color = new Color32(255, 0, 0, 255);
     }
 
     protected override void OnDisconnected()
     {
         Debug.Log("Disconnected.");
         isConnected = false;
+        
+        textConnected.text = "Disconnected!";
+        textConnected.color = new Color32(255, 0, 0, 255);
     }
 
     protected override void OnConnectionLost()
     {
         Debug.Log("CONNECTION LOST!");
+        
+        textConnected.text = "Connection Lost!";
+        textConnected.color = new Color32(255, 0, 0, 255);
     }
 
     protected override void SubscribeTopics()
