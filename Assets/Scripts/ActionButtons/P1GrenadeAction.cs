@@ -55,7 +55,7 @@ public class P1GrenadeAction : MonoBehaviour
         {
             //Send grenade hit msg to ultra96
             mqttReceiver.topicPublish = "grenade17";
-            mqttReceiver.messagePublish = "{\"p1\":{\"grenade_hit\":\"yes\"}}";
+            mqttReceiver.messagePublish = "yes1";
             mqttReceiver.Publish();
         }
         grenadeSound.GrenadeDelay();
