@@ -37,11 +37,11 @@ public class GameOverUIManager : MonoBehaviour
         background.GetComponent<Image>().enabled = true;
         buttonQuit.GetComponent<Button>().enabled = true;
         buttonQuit.GetComponent<Image>().enabled = true;
-        if (Convert.ToInt32(json["p1"]["num_kills"]) == Convert.ToInt32(json["p2"]["num_kills"]))
+        if (Convert.ToInt32(json["p1"]["num_deaths"]) == Convert.ToInt32(json["p2"]["num_deaths"]))
         {
             textWinner.text = "Game Draw!";
         }
-        else if (Convert.ToInt32(json["p1"]["num_kills"]) > Convert.ToInt32(json["p2"]["num_kills"]))
+        else if (Convert.ToInt32(json["p1"]["num_deaths"]) < Convert.ToInt32(json["p2"]["num_deaths"]))
         {
             textWinner.text = "Player 1 Wins!";
         }
