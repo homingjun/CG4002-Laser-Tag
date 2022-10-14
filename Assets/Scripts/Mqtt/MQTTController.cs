@@ -73,14 +73,6 @@ public class MQTTController : MonoBehaviour
         {
             p2Shield.UseShield(json);
         }
-        if (json["p1"]["shield_broke"].ToString() == "yes") 
-        {
-            p1Shield.RemoveShield();
-        }
-        if (json["p2"]["shield_broke"].ToString() == "yes")
-        {
-            p2Shield.RemoveShield();
-        }
 
 
         //Reload
