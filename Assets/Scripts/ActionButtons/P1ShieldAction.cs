@@ -85,12 +85,12 @@ public class P1ShieldAction : MonoBehaviour
             cooldownTimer = cooldownTime;
         }*/
 
-        if (Convert.ToInt32(json["p1"]["num_shield"]) > 0)
+        if (Convert.ToInt32(json["p1"]["num_shield"]) >= 0)
         {
             shieldSound.PlayShieldSound();
 
-            timerStatus = true;
-            cooldownTimer = Convert.ToInt32(json["p1"]["shield_time"]);        
+            //timerStatus = true;
+            //cooldownTimer = Convert.ToInt32(json["p1"]["shield_time"]);      
    
             shieldManagerPlayerOneShieldStatus.playerOneShieldStatus = true;
             shieldManagerTimerStatus.enabled = true;
@@ -103,10 +103,10 @@ public class P1ShieldAction : MonoBehaviour
     */
     public void RemoveShield()
     {
-        timerStatus = false;
+        //timerStatus = false;
         shieldSound.PlayShieldBreakSound();
 
-        //shieldHP.shieldHP = 0;
+        shieldHP.shieldHP = 0;
         shieldBar.fillAmount = 0.0f;
         shieldCooldown.fillAmount = 0.0f;
 
@@ -115,38 +115,39 @@ public class P1ShieldAction : MonoBehaviour
         shieldMesh.enabled = false;
     }
 
-    /*
-        Update the shield timer shown on the Visualiser in real time.
-    */
-    void UpdateTimer(float currentTime)
-    {
-        currentTime += 1;
-        float seconds = Mathf.FloorToInt(currentTime % 60);
-        shieldTimer.shieldTimer = (int)seconds;
-    }
+    
+    // /*
+    //     Update the shield timer shown on the Visualiser in real time.
+    // */
+    // void UpdateTimer(float currentTime)
+    // {
+    //     currentTime += 1;
+    //     float seconds = Mathf.FloorToInt(currentTime % 60);
+    //     shieldTimer.shieldTimer = (int)seconds;
+    // }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (timerStatus && cooldownTimer > 0)
-        {
-            cooldownTimer -= Time.deltaTime;
-            shieldCooldown.fillAmount = cooldownTimer / cooldownTime;
-            UpdateTimer(cooldownTimer);
-            if (cooldownTimer <= 0f || shieldHP.shieldHP <= 0)
-            {
-                RemoveShield();
-            }
-        }
+    // // Update is called once per frame
+    // void Update()
+    // {
+    //     if (timerStatus && cooldownTimer > 0)
+    //     {
+    //         cooldownTimer -= Time.deltaTime;
+    //         shieldCooldown.fillAmount = cooldownTimer / cooldownTime;
+    //         UpdateTimer(cooldownTimer);
+    //         if (cooldownTimer <= 0f || shieldHP.shieldHP <= 0)
+    //         {
+    //             RemoveShield();
+    //         }
+    //     }
 
-        /*if (cooldownTimer <= 0f || shieldBroke)
-        {
-            buttonCooldownTimer += Time.deltaTime;
-        }*/
+    //     /*if (cooldownTimer <= 0f || shieldBroke)
+    //     {
+    //         buttonCooldownTimer += Time.deltaTime;
+    //     }*/
 
-        /*if (Convert.ToInt32(shieldTimers["p1"]["shield_timer"]) <= 0f || shieldHP.shieldHP <= 0)
-        {
-            RemoveShield();
-        }*/
-    }
+    //     /*if (Convert.ToInt32(shieldTimers["p1"]["shield_timer"]) <= 0f || shieldHP.shieldHP <= 0)
+    //     {
+    //         RemoveShield();
+    //     }*/
+    // }
 }

@@ -44,6 +44,6 @@ public class P2UIManager : MonoBehaviour
         shieldTimer.shieldTimer = Convert.ToInt32(json["p2"]["shield_time"]);
         shieldCooldown.fillAmount = Convert.ToUInt32(json["p2"]["shield_time"]) / 10f;
 
-        p2Score.playerTwoScore = Convert.ToInt32(json["p2"]["num_deaths"]);
+        p2Score.playerTwoScore = Convert.ToInt32(json["p1"]["num_deaths"]);
     }
 }

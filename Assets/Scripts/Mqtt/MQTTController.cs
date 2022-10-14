@@ -91,7 +91,7 @@ public class MQTTController : MonoBehaviour
         {
             winner.GameWinner(json);
         }
-
+        
         p1UI.UpdateUI(json);
         p2UI.UpdateUI(json);
 

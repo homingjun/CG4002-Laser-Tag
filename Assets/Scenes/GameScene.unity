@@ -766,7 +766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &110021932
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1695,13 +1695,14 @@ MonoBehaviour:
   hpCount: {fileID: 1501244542}
   ammoCount: {fileID: 289690893}
   grenadeCount: {fileID: 1265164948}
-  shieldHPCount: {fileID: 1448487089}
+  shieldHP: {fileID: 1448487089}
   shieldCount: {fileID: 1448487089}
   shieldTimer: {fileID: 1448487089}
   p1Score: {fileID: 616453336}
   hpBar: {fileID: 1927876435}
   shieldBar: {fileID: 34175615}
   shieldCooldown: {fileID: 2121985715}
+  p1Shield: {fileID: 1080212140}
 --- !u!114 &438103561
 MonoBehaviour:
   m_ObjectHideFlags: 0
