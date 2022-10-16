@@ -14,7 +14,7 @@ public class P2UIManager : MonoBehaviour
     [SerializeField]
     private GrenadeUIManager grenadeCount; //Text Grenade Opponent
     [SerializeField]
-    private ShieldUIManager shieldHPCount; //Text Shield Opponent
+    private ShieldUIManager shieldHP; //Text Shield Opponent
     [SerializeField]
     private ShieldUIManager shieldCount; //Text Shield Number Opponent
     [SerializeField]
@@ -23,13 +23,11 @@ public class P2UIManager : MonoBehaviour
     private ScoreManager p2Score; //Text P2 Score
     [SerializeField]
     private Image shieldCooldown; //Shield Fill Opponent
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+    private bool timerStatus = false;
+    private float cooldownTime = 10f;
+    private float cooldownTimer = 0.0f;
+    [SerializeField]
+    private P2ShieldAction p2Shield;
 
     public void UpdateUI(JObject json)
     {
@@ -39,11 +37,40 @@ public class P2UIManager : MonoBehaviour
 
         grenadeCount.numGrenades = Convert.ToInt32(json["p2"]["grenades"]);
 
-        shieldHPCount.shieldHP = Convert.ToInt32(json["p2"]["shield_health"]);
-        shieldCount.numShield = Convert.ToInt32(json["p2"]["num_shield"]);
-        shieldTimer.shieldTimer = Convert.ToInt32(json["p2"]["shield_time"]);
-        shieldCooldown.fillAmount = Convert.ToUInt32(json["p2"]["shield_time"]) / 10f;
+        if (Convert.ToInt32(json["p2"]["num_shield"]) >= 0 && json["p2"]["action"].ToString() == "shield")
+        {
+            shieldHP.shieldHP = Convert.ToInt32(json["p2"]["shield_health"]);
+            shieldCount.numShield = Convert.ToInt32(json["p2"]["num_shield"]);
+            shieldTimer.shieldTimer = Convert.ToInt32(json["p2"]["shield_time"]);
+            shieldCooldown.fillAmount = Convert.ToUInt32(json["p2"]["shield_time"]) / 10f;
+        }
 
         p2Score.playerTwoScore = Convert.ToInt32(json["p1"]["num_deaths"]);
+    }
+
+    /*
+        Update the shield timer shown on the Visualiser in real time.
+    */
+    void UpdateTimer(float currentTime)
+    {
+        currentTime += 1;
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+        shieldTimer.shieldTimer = (int)seconds;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (timerStatus && cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+            shieldCooldown.fillAmount = cooldownTimer / cooldownTime;
+            UpdateTimer(cooldownTimer);
+            if (cooldownTimer <= 0f || shieldHP.shieldHP <= 0)
+            {
+                p2Shield.RemoveShield();
+                timerStatus = false;
+            }
+        }
     }
 }

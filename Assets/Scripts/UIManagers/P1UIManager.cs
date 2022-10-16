@@ -27,7 +27,7 @@ public class P1UIManager : MonoBehaviour
     private Image shieldBar; //Shield Bar
     [SerializeField]
     private Image shieldCooldown; //Shield Fill
-    
+
     private bool timerStatus = false;
     private float cooldownTime = 10f;
     private float cooldownTimer = 0.0f;
@@ -41,7 +41,6 @@ public class P1UIManager : MonoBehaviour
         shieldBar.fillAmount = 0f;
     }
 
-
     public void UpdateUI(JObject json)
     {
         hpCount.HP = Convert.ToInt32(json["p1"]["hp"]);
@@ -51,10 +50,11 @@ public class P1UIManager : MonoBehaviour
 
         grenadeCount.numGrenades = Convert.ToInt32(json["p1"]["grenades"]);
 
-        
+
         shieldCount.numShield = Convert.ToInt32(json["p1"]["num_shield"]);
 
-        if (Convert.ToInt32(json["p1"]["num_shield"]) >= 0 && json["p1"]["action"].ToString() == "shield") {
+        if (Convert.ToInt32(json["p1"]["num_shield"]) >= 0 && json["p1"]["action"].ToString() == "shield")
+        {
             timerStatus = true;
             cooldownTimer = Convert.ToUInt32(json["p1"]["shield_time"]);
             shieldHP.shieldHP = Convert.ToInt32(json["p1"]["shield_health"]);
@@ -90,15 +90,5 @@ public class P1UIManager : MonoBehaviour
                 timerStatus = false;
             }
         }
-
-        /*if (cooldownTimer <= 0f || shieldBroke)
-        {
-            buttonCooldownTimer += Time.deltaTime;
-        }*/
-
-        /*if (Convert.ToInt32(shieldTimers["p1"]["shield_timer"]) <= 0f || shieldHP.shieldHP <= 0)
-        {
-            RemoveShield();
-        }*/
     }
 }
