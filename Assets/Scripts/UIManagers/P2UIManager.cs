@@ -39,6 +39,8 @@ public class P2UIManager : MonoBehaviour
 
         if (Convert.ToInt32(json["p2"]["num_shield"]) >= 0 && json["p2"]["action"].ToString() == "shield")
         {
+            timerStatus = true;
+            cooldownTimer = Convert.ToUInt32(json["p2"]["shield_time"]);
             shieldHP.shieldHP = Convert.ToInt32(json["p2"]["shield_health"]);
             shieldCount.numShield = Convert.ToInt32(json["p2"]["num_shield"]);
             shieldTimer.shieldTimer = Convert.ToInt32(json["p2"]["shield_time"]);
