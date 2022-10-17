@@ -88,7 +88,7 @@ public class MQTTReceiver : M2MqttUnityClient
     {
         base.OnConnected();
         isConnected = true;
-        textConnected.text = "Connected!";
+        textConnected.text = "Connected as Player 2!";
         textConnected.color = new Color32(0, 255, 45, 255);
 
         if (autoTest)
@@ -100,7 +100,7 @@ public class MQTTReceiver : M2MqttUnityClient
     protected override void OnConnectionFailed(string errorMessage)
     {
         Debug.Log("CONNECTION FAILED! " + errorMessage);
-        
+
         textConnected.text = "Connection Failed!";
         textConnected.color = new Color32(255, 0, 0, 255);
     }
@@ -109,7 +109,7 @@ public class MQTTReceiver : M2MqttUnityClient
     {
         Debug.Log("Disconnected.");
         isConnected = false;
-        
+
         textConnected.text = "Disconnected!";
         textConnected.color = new Color32(255, 0, 0, 255);
     }
@@ -117,7 +117,7 @@ public class MQTTReceiver : M2MqttUnityClient
     protected override void OnConnectionLost()
     {
         Debug.Log("CONNECTION LOST!");
-        
+
         textConnected.text = "Connection Lost!";
         textConnected.color = new Color32(255, 0, 0, 255);
     }

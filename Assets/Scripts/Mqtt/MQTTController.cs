@@ -43,55 +43,55 @@ public class MQTTController : MonoBehaviour
         json = JObject.Parse(newMsg);
 
         //Shooting
-        if (json["p1"]["action"].ToString() == "shoot")
+        if (json["p2"]["action"].ToString() == "shoot")
         {
             p1Shoot.ShootBullet(json);
         }
-        if (json["p2"]["action"].ToString() == "shoot")
+        if (json["p1"]["action"].ToString() == "shoot")
         {
             p2Shoot.ShootBullet(json);
         }
 
-        
+
         //Grenading
-        if (json["p1"]["action"].ToString() == "grenade")
+        if (json["p2"]["action"].ToString() == "grenade")
         {
             p1Grenade.UseGrenade();
         }
-        if (json["p2"]["action"].ToString() == "grenade")
+        if (json["p1"]["action"].ToString() == "grenade")
         {
             p2Grenade.UseGrenade(json);
         }
 
 
         //Shielding
-        if (json["p1"]["action"].ToString() == "shield")
+        if (json["p2"]["action"].ToString() == "shield")
         {
             p1Shield.UseShield(json);
         }
-        if (json["p2"]["action"].ToString() == "shield")
+        if (json["p1"]["action"].ToString() == "shield")
         {
             p2Shield.UseShield(json);
         }
 
 
         //Reload
-        if (json["p1"]["action"].ToString() == "reload")
+        if (json["p2"]["action"].ToString() == "reload")
         {
             reload.ReloadPlayerOne();
         }
-        if (json["p2"]["action"].ToString() == "reload")
+        if (json["p1"]["action"].ToString() == "reload")
         {
             reload.ReloadPlayerTwo();
         }
 
 
         //End the game
-        if (json["p1"]["action"].ToString() == "logout" || json["p2"]["action"].ToString() == "logout")
+        if (json["p2"]["action"].ToString() == "logout" || json["p1"]["action"].ToString() == "logout")
         {
             winner.GameWinner(json);
         }
-        
+
         p1UI.UpdateUI(json);
         p2UI.UpdateUI(json);
 

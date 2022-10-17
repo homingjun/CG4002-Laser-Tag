@@ -31,21 +31,23 @@ public class P2UIManager : MonoBehaviour
 
     public void UpdateUI(JObject json)
     {
-        hpCount.HP = Convert.ToInt32(json["p2"]["hp"]);
+        hpCount.HP = Convert.ToInt32(json["p1"]["hp"]);
 
-        ammoCount.numAmmo = Convert.ToInt32(json["p2"]["bullets"]);
+        ammoCount.numAmmo = Convert.ToInt32(json["p1"]["bullets"]);
 
-        grenadeCount.numGrenades = Convert.ToInt32(json["p2"]["grenades"]);
+        grenadeCount.numGrenades = Convert.ToInt32(json["p1"]["grenades"]);
 
-        if (Convert.ToInt32(json["p2"]["num_shield"]) >= 0 && json["p2"]["action"].ToString() == "shield")
+        if (Convert.ToInt32(json["p1"]["num_shield"]) >= 0 && json["p1"]["action"].ToString() == "shield")
         {
-            shieldHP.shieldHP = Convert.ToInt32(json["p2"]["shield_health"]);
-            shieldCount.numShield = Convert.ToInt32(json["p2"]["num_shield"]);
-            shieldTimer.shieldTimer = Convert.ToInt32(json["p2"]["shield_time"]);
-            shieldCooldown.fillAmount = Convert.ToUInt32(json["p2"]["shield_time"]) / 10f;
+            timerStatus = true;
+            cooldownTimer = Convert.ToUInt32(json["p1"]["shield_time"]);
+            shieldHP.shieldHP = Convert.ToInt32(json["p1"]["shield_health"]);
+            shieldCount.numShield = Convert.ToInt32(json["p1"]["num_shield"]);
+            shieldTimer.shieldTimer = Convert.ToInt32(json["p1"]["shield_time"]);
+            shieldCooldown.fillAmount = Convert.ToUInt32(json["p1"]["shield_time"]) / 10f;
         }
 
-        p2Score.playerTwoScore = Convert.ToInt32(json["p1"]["num_deaths"]);
+        p2Score.playerTwoScore = Convert.ToInt32(json["p2"]["num_deaths"]);
     }
 
     /*

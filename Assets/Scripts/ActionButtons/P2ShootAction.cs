@@ -18,7 +18,7 @@ public class P2ShootAction : MonoBehaviour
     {
         Vector3 temp = cam.position;
 
-        if (Convert.ToInt32(json["p1"]["shield_health"]) <= 0 && json["p2"]["bullet_hit"].ToString() == "yes")
+        if (Convert.ToInt32(json["p2"]["shield_health"]) <= 0 && json["p1"]["bullet_hit"].ToString() == "yes")
         {
             Instantiate(bulletHitEffect, temp, cam.rotation);
         }

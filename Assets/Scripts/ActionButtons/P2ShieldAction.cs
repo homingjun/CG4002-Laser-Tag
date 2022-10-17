@@ -32,7 +32,7 @@ public class P2ShieldAction : MonoBehaviour
     */
     public void UseShield(JObject json)
     {
-        if (Convert.ToInt32(json["p2"]["num_shield"]) >= 0)
+        if (Convert.ToInt32(json["p1"]["num_shield"]) >= 0)
         {
             shieldSound.PlayShieldSound();
             shieldManagerPlayerTwoShieldStatus.playerTwoShieldStatus = true;
