@@ -15,6 +15,12 @@ public class AudioManager : MonoBehaviour
     private AudioSource shieldBreakSound; //Shield Items
     [SerializeField]
     private AudioSource reloadSound; //Ammo Items
+    [SerializeField]
+    private AudioSource imuDcSound; //IMU
+    [SerializeField]
+    private AudioSource gunDcSound; //GUN
+    [SerializeField]
+    private AudioSource vestDcSound; //VEST
 
     public void PlayBulletSound()
     {
@@ -43,5 +49,20 @@ public class AudioManager : MonoBehaviour
     public void PlayReloadSound()
     {
         reloadSound.Play();
+    }
+
+    public void PlayImuDisconnectedSound()
+    {
+        imuDcSound.Play();
+    }
+
+    public void PlayGunDisconnectedSound()
+    {
+        gunDcSound.Play();
+    }
+
+    public void PlayVestDisconnectedSound()
+    {
+        vestDcSound.Play();
     }
 }
