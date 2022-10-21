@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Newtonsoft.Json.Linq;
+using TMPro;
 
 public class P1UIManager : MonoBehaviour
 {
@@ -27,22 +28,40 @@ public class P1UIManager : MonoBehaviour
     private Image shieldBar; //Shield Bar
     [SerializeField]
     private Image shieldCooldown; //Shield Fill
+    [SerializeField]
+    public TMP_Text textInfo;
+    [SerializeField]
+    public TMP_Text textCurrentAction;
+    [SerializeField]
+    public TMP_Text textPreviousAction;
+    [SerializeField]
+    public TMP_Text textWarning;
 
     private bool timerStatus = false;
     private float cooldownTime = 10f;
     private float cooldownTimer = 0.0f;
     [SerializeField]
     private P1ShieldAction p1Shield;
+    [SerializeField]
+    private MQTTController mqttController;
 
     // Start is called before the first frame update
     void Start()
     {
         hpBar.fillAmount = 1f;
         shieldBar.fillAmount = 0f;
+        textInfo.text = "";
+        textCurrentAction.text = "Current Action: ";
+        textPreviousAction.text = "Previous Action: ";
+        textWarning.text = "";
     }
 
     public void UpdateUI(JObject json)
     {
+        textCurrentAction.text = "Current Action: " + json["p1"]["action"].ToString();
+        textPreviousAction.text = "Previous Action: " + mqttController.previousJson["p1"]["action"].ToString();
+        mqttController.previousJson = json;
+
         hpCount.HP = Convert.ToInt32(json["p1"]["hp"]);
         hpBar.fillAmount = hpCount.HP / (float)100;
 

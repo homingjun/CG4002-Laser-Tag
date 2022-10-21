@@ -11,7 +11,8 @@ public class MQTTController : MonoBehaviour
     public string nameController = "Visualizer17";
 
     public MQTTReceiver _eventSender;
-    private JObject json;
+    private JObject currentJson;
+    public JObject previousJson;
     [SerializeField]
     private P1UIManager p1UI;
     [SerializeField]
@@ -32,6 +33,12 @@ public class MQTTController : MonoBehaviour
     private ReloadButton reload;
     [SerializeField]
     private GameOverUIManager winner;
+    [SerializeField]
+    private P1UIManager textInfo;
+    [SerializeField]
+    private P1UIManager textWarning;
+    [SerializeField]
+    private AudioManager dcSound; //Canvas
 
     void Start()
     {
@@ -40,60 +47,89 @@ public class MQTTController : MonoBehaviour
 
     private void OnMessageArrivedHandler(string newMsg)
     {
-        json = JObject.Parse(newMsg);
-
-        //Shooting
-        if (json["p1"]["action"].ToString() == "shoot")
+        currentJson = JObject.Parse(newMsg);
+        if (previousJson == null)
         {
-            p1Shoot.ShootBullet(json);
-        }
-        if (json["p2"]["action"].ToString() == "shoot")
-        {
-            p2Shoot.ShootBullet(json);
+            previousJson = currentJson;
         }
 
-        
-        //Grenading
-        if (json["p1"]["action"].ToString() == "grenade")
+        textInfo.textInfo.text = "";
+
+        string action1 = currentJson["p1"]["action"].ToString();
+        string action2 = currentJson["p2"]["action"].ToString();
+        string connection = currentJson["connection"].ToString();
+
+        switch (action1)
         {
-            p1Grenade.UseGrenade();
-        }
-        if (json["p2"]["action"].ToString() == "grenade")
-        {
-            p2Grenade.UseGrenade(json);
+            case "shoot":
+                p1Shoot.ShootBullet(currentJson);
+                break;
+            case "grenade":
+                p1Grenade.UseGrenade();
+                break;
+            case "shield":
+                p1Shield.UseShield(currentJson);
+                break;
+            case "reload":
+                reload.ReloadPlayerOne();
+                break;
+            case "fail_shoot":
+                textInfo.textInfo.text = "Please Reload!";
+                break;
+            case "fail_grenade":
+                textInfo.textInfo.text = "Out of Grenades!";
+                break;
+            case "fail_shield":
+                textInfo.textInfo.text = "Out of Shields!";
+                break;
+            case "fail_reload":
+                textInfo.textInfo.text = "Already Reloaded!";
+                break;
+            case "logout":
+                winner.GameWinner(currentJson);
+                break;
         }
 
-
-        //Shielding
-        if (json["p1"]["action"].ToString() == "shield")
+        switch (action2)
         {
-            p1Shield.UseShield(json);
-        }
-        if (json["p2"]["action"].ToString() == "shield")
-        {
-            p2Shield.UseShield(json);
-        }
-
-
-        //Reload
-        if (json["p1"]["action"].ToString() == "reload")
-        {
-            reload.ReloadPlayerOne();
-        }
-        if (json["p2"]["action"].ToString() == "reload")
-        {
-            reload.ReloadPlayerTwo();
+            case "shoot":
+                p2Shoot.ShootBullet(currentJson);
+                break;
+            case "grenade":
+                p2Grenade.UseGrenade();
+                break;
+            case "shield":
+                p2Shield.UseShield(currentJson);
+                break;
+            case "reload":
+                reload.ReloadPlayerTwo();
+                break;
+            case "logout":
+                winner.GameWinner(currentJson);
+                break;
         }
 
-
-        //End the game
-        if (json["p1"]["action"].ToString() == "logout" || json["p2"]["action"].ToString() == "logout")
+        switch (connection)
         {
-            winner.GameWinner(json);
+            case "imu":
+                textWarning.textWarning.text = "IMU Disconnected!";
+                dcSound.PlayImuDisconnectedSound();
+                break;
+            case "gun":
+                textWarning.textWarning.text = "Gun Disconnected!";
+                dcSound.PlayGunDisconnectedSound();
+                break;
+            case "vest":
+                textWarning.textWarning.text = "Vest Disconnected!";
+                dcSound.PlayVestDisconnectedSound();
+                break;
+            default:
+                textWarning.textWarning.text = "";
+                break;
         }
-        
-        p1UI.UpdateUI(json);
-        p2UI.UpdateUI(json);
+
+        p1UI.UpdateUI(currentJson);
+        p2UI.UpdateUI(currentJson);
 
         Debug.Log("Event Fired. The message, from Object " + nameController + " is = " + newMsg);
     }

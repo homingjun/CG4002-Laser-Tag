@@ -12,7 +12,7 @@ public class P2GrenadeAction : MonoBehaviour
     private AudioManager grenadeSound;
     public bool isClicked = false;
 
-    public void UseGrenade(JObject json)
+    public void UseGrenade()
     {
         grenade.hasThrown = true;
         isClicked = true;
