@@ -36,7 +36,8 @@ public class P1UIManager : MonoBehaviour
     public TMP_Text textPreviousAction;
     [SerializeField]
     public TMP_Text textWarning;
-
+    [SerializeField]
+    public TMP_Text textWarningOpp;
     private bool timerStatus = false;
     private float cooldownTime = 10f;
     private float cooldownTimer = 0.0f;
@@ -54,12 +55,19 @@ public class P1UIManager : MonoBehaviour
         textCurrentAction.text = "Current Action: ";
         textPreviousAction.text = "Previous Action: ";
         textWarning.text = "";
+        textWarningOpp.text = "";
     }
 
     public void UpdateUI(JObject json)
-    {
-        textCurrentAction.text = "Current Action: " + json["p1"]["action"].ToString();
-        textPreviousAction.text = "Previous Action: " + mqttController.previousJson["p1"]["action"].ToString();
+    {   
+        if (json["p1"]["action"].ToString() != "none") {
+            textCurrentAction.text = "Current Action: " + json["p1"]["action"].ToString();
+        }
+        if (mqttController.previousJson["p1"]["action"].ToString() != "none") {
+            textPreviousAction.text = "Previous Action: " + mqttController.previousJson["p1"]["action"].ToString();
+        }
+
+        //Set previousJson to the current json
         mqttController.previousJson = json;
 
         hpCount.HP = Convert.ToInt32(json["p1"]["hp"]);
