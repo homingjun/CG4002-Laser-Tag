@@ -49,7 +49,6 @@ public class P1UIManager : MonoBehaviour
     {
         hpBar.fillAmount = 1f;
         shieldBar.fillAmount = 0f;
-        textInfo.text = "";
         textCurrentAction.text = "Current Action: ";
         textPreviousAction.text = "Previous Action: ";
         textWarning.text = "";
@@ -58,37 +57,37 @@ public class P1UIManager : MonoBehaviour
 
     public void UpdateUI(JObject json)
     {   
-        if (json["p1"]["action"].ToString() != "none") {
-            textCurrentAction.text = "Current Action: " + json["p1"]["action"].ToString();
+        if (json["p2"]["action"].ToString() != "none") {
+            textCurrentAction.text = "Current Action: " + json["p2"]["action"].ToString();
         }
-        if (mqttController.previousJson["p1"]["action"].ToString() != "none") {
-            textPreviousAction.text = "Previous Action: " + mqttController.previousJson["p1"]["action"].ToString();
+        if (mqttController.previousJson["p2"]["action"].ToString() != "none") {
+            textPreviousAction.text = "Previous Action: " + mqttController.previousJson["p2"]["action"].ToString();
         }
 
         //Set previousJson to the current json
         mqttController.previousJson = json;
 
-        hpCount.HP = Convert.ToInt32(json["p1"]["hp"]);
+        hpCount.HP = Convert.ToInt32(json["p2"]["hp"]);
         hpBar.fillAmount = hpCount.HP / (float)100;
 
-        ammoCount.numAmmo = Convert.ToInt32(json["p1"]["bullets"]);
+        ammoCount.numAmmo = Convert.ToInt32(json["p2"]["bullets"]);
 
-        grenadeCount.numGrenades = Convert.ToInt32(json["p1"]["grenades"]);
+        grenadeCount.numGrenades = Convert.ToInt32(json["p2"]["grenades"]);
 
 
-        shieldCount.numShield = Convert.ToInt32(json["p1"]["num_shield"]);
+        shieldCount.numShield = Convert.ToInt32(json["p2"]["num_shield"]);
 
-        if (Convert.ToInt32(json["p1"]["num_shield"]) >= 0 && json["p1"]["action"].ToString() == "shield")
+        if (Convert.ToInt32(json["p2"]["num_shield"]) >= 0 && json["p2"]["action"].ToString() == "shield")
         {
             timerStatus = true;
-            cooldownTimer = Convert.ToUInt32(json["p1"]["shield_time"]);
-            shieldHP.shieldHP = Convert.ToInt32(json["p1"]["shield_health"]);
-            shieldTimer.shieldTimer = Convert.ToInt32(json["p1"]["shield_time"]);
+            cooldownTimer = Convert.ToUInt32(json["p2"]["shield_time"]);
+            shieldHP.shieldHP = Convert.ToInt32(json["p2"]["shield_health"]);
+            shieldTimer.shieldTimer = Convert.ToInt32(json["p2"]["shield_time"]);
             shieldBar.fillAmount = shieldHP.shieldHP / (float)30;
-            shieldCooldown.fillAmount = Convert.ToUInt32(json["p1"]["shield_time"]) / 10f;
+            shieldCooldown.fillAmount = Convert.ToUInt32(json["p2"]["shield_time"]) / 10f;
         }
 
-        p1Score.playerOneScore = Convert.ToInt32(json["p2"]["num_deaths"]);
+        p1Score.playerOneScore = Convert.ToInt32(json["p1"]["num_deaths"]);
     }
 
     /*

@@ -86,7 +86,7 @@ public class MQTTReceiver : M2MqttUnityClient
     {
         base.OnConnected();
         isConnected = true;
-        textConnected.text = "Connected as Player 1!";
+        textConnected.text = "Connected as Player 2!";
         textConnected.color = new Color32(0, 255, 45, 255);
 
         if (autoTest)

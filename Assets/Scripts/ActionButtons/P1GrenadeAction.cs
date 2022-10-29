@@ -20,7 +20,7 @@ public class P1GrenadeAction : MonoBehaviour
         if (playerFoundStatus.playerFound)
         {
             //Send grenade hit msg to ultra96
-            mqttReceiver.messagePublish = "yes1";
+            mqttReceiver.messagePublish = "yes2";
             mqttReceiver.Publish();
         }
         else {

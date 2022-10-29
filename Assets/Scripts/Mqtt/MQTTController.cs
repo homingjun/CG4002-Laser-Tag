@@ -55,8 +55,8 @@ public class MQTTController : MonoBehaviour
         string vestStatus2;
 
         if (currentJson.ToString().Contains("action") && !previousTextWarning.Contains("Disconnect")) {
-            action1 = currentJson["p1"]["action"].ToString();
-            action2 = currentJson["p2"]["action"].ToString();
+            action1 = currentJson["p2"]["action"].ToString();
+            action2 = currentJson["p1"]["action"].ToString();
 
             //Set previousJson to the currentJson (for the first iteration,) when it is null.
             if (previousJson == null)
@@ -96,7 +96,7 @@ public class MQTTController : MonoBehaviour
                 Invoke("RemoveWarning", 3f);
                 break;
             case "fail_shield":
-                if (Convert.ToInt32(currentJson["p1"]["num_shield"]) == 0) {
+                if (Convert.ToInt32(currentJson["p2"]["num_shield"]) == 0) {
                     textWarning.textWarning.text = "Out of Shields!";
                     previousTextWarning = textWarning.textWarning.text;
                     sound.PlayOutOfShieldsSound();
@@ -110,7 +110,7 @@ public class MQTTController : MonoBehaviour
                 }  
                 break;
             case "fail_reload":
-                if (Convert.ToInt32(currentJson["p1"]["bullets"]) == 6) {
+                if (Convert.ToInt32(currentJson["p2"]["bullets"]) == 6) {
                     textWarning.textWarning.text = "Already Reloaded!";
                     previousTextWarning = textWarning.textWarning.text;
                     sound.PlayAlreadyReloadedSound();
@@ -153,12 +153,12 @@ public class MQTTController : MonoBehaviour
         }
         
         if (currentJson.ToString().Contains("imu")) {
-            imuStatus1 = currentJson["p1"]["imu"].ToString();
-            gunStatus1 = currentJson["p1"]["gun"].ToString();
-            vestStatus1 = currentJson["p1"]["vest"].ToString();
-            imuStatus2 = currentJson["p2"]["imu"].ToString();
-            gunStatus2 = currentJson["p2"]["gun"].ToString();
-            vestStatus2 = currentJson["p2"]["vest"].ToString();
+            imuStatus1 = currentJson["p2"]["imu"].ToString();
+            gunStatus1 = currentJson["p2"]["gun"].ToString();
+            vestStatus1 = currentJson["p2"]["vest"].ToString();
+            imuStatus2 = currentJson["p1"]["imu"].ToString();
+            gunStatus2 = currentJson["p1"]["gun"].ToString();
+            vestStatus2 = currentJson["p1"]["vest"].ToString();
 
             //check disconnection status
             if (imuStatus1 == "no" && gunStatus1 == "no" && vestStatus1 == "no") {

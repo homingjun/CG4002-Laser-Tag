@@ -585,7 +585,7 @@ MonoBehaviour:
   reload: {fileID: 1828238233}
   winner: {fileID: 438103562}
   textWarning: {fileID: 438103560}
-  sound: {fileID: 0}
+  sound: {fileID: 438103559}
 --- !u!4 &36235791
 Transform:
   m_ObjectHideFlags: 0
