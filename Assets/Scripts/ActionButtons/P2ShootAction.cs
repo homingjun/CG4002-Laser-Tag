@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Newtonsoft.Json.Linq;
 
 public class P2ShootAction : MonoBehaviour

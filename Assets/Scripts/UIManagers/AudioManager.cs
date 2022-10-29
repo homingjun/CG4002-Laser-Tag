@@ -1,26 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
 
     [SerializeField]
-    private AudioSource bulletSound; //Ammo Icon
+    private AudioSource bulletSound; //Bullet Sound
     [SerializeField]
-    private AudioSource grenadeSound; //Grenade Icon
+    private AudioSource grenadeSound; //Grenade Sound
     [SerializeField]
-    private AudioSource shieldSound; //Shield Icon
+    private AudioSource shieldSound; //Shield Sound
     [SerializeField]
-    private AudioSource shieldBreakSound; //Shield Items
+    private AudioSource shieldBreakSound; //Shield Break Sound
     [SerializeField]
-    private AudioSource reloadSound; //Ammo Items
+    private AudioSource reloadSound; //Reload Sound
+    [SerializeField]
+    private AudioSource pleaseReloadSound; //Please Reload Sound
+    [SerializeField]
+    private AudioSource outOfGrenadesSound; //Out of Grenades Sound
+    [SerializeField]
+    private AudioSource outOfShieldsSound; //Out of Shields Sound
+    [SerializeField]
+    private AudioSource shieldAlreadyActiveSound; //Shield Already Active Sound
+    [SerializeField]
+    private AudioSource alreadyReloadedSound; //Already Reloaded Sound
+     [SerializeField]
+    private AudioSource youHaveBulletsSound; //You Have Bullets Sound
     [SerializeField]
     private AudioSource imuDcSound; //IMU
     [SerializeField]
     private AudioSource gunDcSound; //GUN
     [SerializeField]
     private AudioSource vestDcSound; //VEST
+    [SerializeField]
+    private AudioSource igvDcSound; //IMU, GUN AND VEST
+    [SerializeField]
+    private AudioSource igDcSound; //IMU AND GUN
+    [SerializeField]
+    private AudioSource ivDcSound; //IMU AND VEST
+    [SerializeField]
+    private AudioSource gvDcSound; //GUN AND VEST
+    [SerializeField]
+    private AudioSource oppDcSound; //Opponent
 
     public void PlayBulletSound()
     {
@@ -51,6 +71,36 @@ public class AudioManager : MonoBehaviour
         reloadSound.Play();
     }
 
+    public void PlayPleaseReloadSound()
+    {
+        pleaseReloadSound.Play();
+    }
+
+    public void PlayOutOfGrenadesSound()
+    {
+        outOfGrenadesSound.Play();
+    }
+
+    public void PlayOutOfShieldsSound()
+    {
+        outOfShieldsSound.Play();
+    }
+
+    public void PlayShieldAlreadyActiveSound()
+    {
+        shieldAlreadyActiveSound.Play();
+    }
+
+    public void PlayAlreadyReloadedSound()
+    {
+        alreadyReloadedSound.Play();
+    }
+
+    public void PlayYouHaveBulletsSound()
+    {
+        youHaveBulletsSound.Play();
+    }
+
     public void PlayImuDisconnectedSound()
     {
         imuDcSound.Play();
@@ -64,5 +114,30 @@ public class AudioManager : MonoBehaviour
     public void PlayVestDisconnectedSound()
     {
         vestDcSound.Play();
+    }
+
+    public void PlayIGVDisconnectedSound()
+    {
+        igvDcSound.Play();
+    }
+
+    public void PlayIGDisconnectedSound()
+    {
+        igDcSound.Play();
+    }
+
+    public void PlayIVDisconnectedSound()
+    {
+        ivDcSound.Play();
+    }
+
+    public void PlayGVDisconnectedSound()
+    {
+        gvDcSound.Play();
+    }
+
+    public void PlayOpponentDisconnectedSound()
+    {
+        oppDcSound.Play();
     }
 }

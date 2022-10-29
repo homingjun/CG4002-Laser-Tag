@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class P1GrenadeAction : MonoBehaviour
@@ -18,11 +16,16 @@ public class P1GrenadeAction : MonoBehaviour
     {
         grenade.hasThrown = true;
         isClicked = true;
+        mqttReceiver.topicPublish = "grenade17";
         if (playerFoundStatus.playerFound)
         {
             //Send grenade hit msg to ultra96
-            mqttReceiver.topicPublish = "grenade17";
             mqttReceiver.messagePublish = "yes1";
+            mqttReceiver.Publish();
+        }
+        else {
+            //Send grenade hit msg to ultra96
+            mqttReceiver.messagePublish = "no";
             mqttReceiver.Publish();
         }
         grenadeSound.GrenadeDelay();

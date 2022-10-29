@@ -1,11 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
 
 public class MQTTController : MonoBehaviour
 {
@@ -35,12 +30,10 @@ public class MQTTController : MonoBehaviour
     [SerializeField]
     private GameOverUIManager winner;
     [SerializeField]
-    private P1UIManager textInfo;
-    [SerializeField]
     private P1UIManager textWarning; 
     [SerializeField]
-    private AudioManager dcSound; //Canvas
-    private bool isJson;
+    private AudioManager sound; //Canvas
+    private string previousTextWarning = "";
 
     void Start()
     {
@@ -51,7 +44,7 @@ public class MQTTController : MonoBehaviour
     {
         currentJson = JObject.Parse(newMsg);
 
-        textInfo.textInfo.text = "";
+        //textWarning.textWarning.text = "";
         string action1 = "";
         string action2 = "";
         string imuStatus1;
@@ -61,7 +54,7 @@ public class MQTTController : MonoBehaviour
         string gunStatus2;
         string vestStatus2;
 
-        if (currentJson.ToString().Contains("action")) {
+        if (currentJson.ToString().Contains("action") && !previousTextWarning.Contains("Disconnect")) {
             action1 = currentJson["p1"]["action"].ToString();
             action2 = currentJson["p2"]["action"].ToString();
 
@@ -91,22 +84,44 @@ public class MQTTController : MonoBehaviour
                 reload.ReloadPlayerOne();
                 break;
             case "fail_shoot":
-                textInfo.textInfo.text = "Please Reload!";
+                textWarning.textWarning.text = "Please Reload!";
+                previousTextWarning = textWarning.textWarning.text;
+                sound.PlayPleaseReloadSound();
+                Invoke("RemoveWarning", 3f);
                 break;
             case "fail_grenade":
-                textInfo.textInfo.text = "Out of Grenades!";
+                textWarning.textWarning.text = "Out of Grenades!";
+                previousTextWarning = textWarning.textWarning.text;
+                sound.PlayOutOfGrenadesSound();
+                Invoke("RemoveWarning", 3f);
                 break;
             case "fail_shield":
-                if (Convert.ToInt32(currentJson["p1"]["num_shield"]) == 0)
-                    textInfo.textInfo.text = "Out of Shields!";
-                else
-                    textInfo.textInfo.text = "Shield Already Active!";            
+                if (Convert.ToInt32(currentJson["p1"]["num_shield"]) == 0) {
+                    textWarning.textWarning.text = "Out of Shields!";
+                    previousTextWarning = textWarning.textWarning.text;
+                    sound.PlayOutOfShieldsSound();
+                    Invoke("RemoveWarning", 3f);
+                }
+                else {
+                    textWarning.textWarning.text = "Shield Already Active!";
+                    previousTextWarning = textWarning.textWarning.text; 
+                    sound.PlayShieldAlreadyActiveSound();
+                    Invoke("RemoveWarning", 3f);      
+                }  
                 break;
             case "fail_reload":
-                if (Convert.ToInt32(currentJson["p1"]["bullets"]) == 6)
-                    textInfo.textInfo.text = "Already Reloaded!";
-                else
-                    textInfo.textInfo.text = "You have Bullets!";
+                if (Convert.ToInt32(currentJson["p1"]["bullets"]) == 6) {
+                    textWarning.textWarning.text = "Already Reloaded!";
+                    previousTextWarning = textWarning.textWarning.text;
+                    sound.PlayAlreadyReloadedSound();
+                    Invoke("RemoveWarning", 3f);
+                }
+                else {
+                    textWarning.textWarning.text = "You have Bullets!";
+                    previousTextWarning = textWarning.textWarning.text;
+                    sound.PlayYouHaveBulletsSound();
+                    Invoke("RemoveWarning", 3f);
+                }
                 break;
             case "logout":
                 winner.GameWinner(currentJson);
@@ -148,47 +163,64 @@ public class MQTTController : MonoBehaviour
             //check disconnection status
             if (imuStatus1 == "no" && gunStatus1 == "no" && vestStatus1 == "no") {
                 textWarning.textWarning.text = "IMU, Gun and Vest Disconnected!";
+                previousTextWarning = textWarning.textWarning.text;
+                previousTextWarning = textWarning.textWarning.text;
+                sound.PlayIGVDisconnectedSound();
             }
             else if (imuStatus1 == "no" && gunStatus1 == "no") {
                 textWarning.textWarning.text = "IMU and Gun Disconnected!";
+                previousTextWarning = textWarning.textWarning.text;
+                sound.PlayIGDisconnectedSound();
             }
             else if (imuStatus1 == "no" && vestStatus1 == "no") {
                 textWarning.textWarning.text = "IMU and Vest Disconnected!";
+                previousTextWarning = textWarning.textWarning.text;
+                sound.PlayIVDisconnectedSound();
             }
             else if (gunStatus1 == "no" && vestStatus1 == "no") {
                 textWarning.textWarning.text = "Gun and Vest Disconnected!";
+                previousTextWarning = textWarning.textWarning.text;
+                sound.PlayGVDisconnectedSound();
             }
             else if (imuStatus1 == "no") {
                 textWarning.textWarning.text = "IMU Disconnected!";
-                dcSound.PlayImuDisconnectedSound();
+                previousTextWarning = textWarning.textWarning.text;
+                sound.PlayImuDisconnectedSound();
             }
             else if (gunStatus1 == "no") {
                 textWarning.textWarning.text = "Gun Disconnected!";
-                dcSound.PlayGunDisconnectedSound();
+                previousTextWarning = textWarning.textWarning.text;
+                sound.PlayGunDisconnectedSound();
             }
             else if (vestStatus1 == "no") {
                 textWarning.textWarning.text = "Vest Disconnected!";
-                dcSound.PlayImuDisconnectedSound();
+                previousTextWarning = textWarning.textWarning.text;
+                sound.PlayImuDisconnectedSound();
             }
             else
                 textWarning.textWarning.text = "";
+                previousTextWarning = textWarning.textWarning.text;
 
             if (imuStatus2 == "no" || gunStatus2 == "no" || vestStatus2 == "no") {
                 textWarning.textWarningOpp.text = "Opponent has a disconnection!";
+                previousTextWarning = textWarning.textWarning.text;
+                sound.PlayOpponentDisconnectedSound();
             }
             else
                 textWarning.textWarningOpp.text = "";
+                previousTextWarning = textWarning.textWarning.text;
         }
-        else {
-            Debug.Log("nothing");
+        else if (!currentJson.ToString().Contains("action")) {
             textWarning.textWarning.text = "";
+            previousTextWarning = textWarning.textWarning.text;
             textWarning.textWarningOpp.text = "";
         }
         
-
-        
-
         Debug.Log("Event Fired. The message, from Object " + nameController + " is = " + newMsg);
     }
 
+    void RemoveWarning() {
+        textWarning.textWarning.text = "";
+        previousTextWarning = textWarning.textWarning.text;
+    }
 }
