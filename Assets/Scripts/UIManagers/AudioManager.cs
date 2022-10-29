@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-
     [SerializeField]
     private AudioSource bulletSound; //Bullet Sound
     [SerializeField]

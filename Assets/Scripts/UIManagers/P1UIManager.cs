@@ -49,7 +49,6 @@ public class P1UIManager : MonoBehaviour
     {
         hpBar.fillAmount = 1f;
         shieldBar.fillAmount = 0f;
-        textInfo.text = "";
         textCurrentAction.text = "Current Action: ";
         textPreviousAction.text = "Previous Action: ";
         textWarning.text = "";
@@ -75,14 +74,13 @@ public class P1UIManager : MonoBehaviour
 
         grenadeCount.numGrenades = Convert.ToInt32(json["p1"]["grenades"]);
 
-
+        shieldHP.shieldHP = Convert.ToInt32(json["p1"]["shield_health"]);
         shieldCount.numShield = Convert.ToInt32(json["p1"]["num_shield"]);
 
         if (Convert.ToInt32(json["p1"]["num_shield"]) >= 0 && json["p1"]["action"].ToString() == "shield")
         {
             timerStatus = true;
             cooldownTimer = Convert.ToUInt32(json["p1"]["shield_time"]);
-            shieldHP.shieldHP = Convert.ToInt32(json["p1"]["shield_health"]);
             shieldTimer.shieldTimer = Convert.ToInt32(json["p1"]["shield_time"]);
             shieldBar.fillAmount = shieldHP.shieldHP / (float)30;
             shieldCooldown.fillAmount = Convert.ToUInt32(json["p1"]["shield_time"]) / 10f;
