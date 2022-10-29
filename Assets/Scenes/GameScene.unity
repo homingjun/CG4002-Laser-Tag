@@ -1034,7 +1034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &110021932
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1074,7 +1074,7 @@ PrefabInstance:
     - target: {fileID: 1882801807420953825, guid: 4bcdbc64d1562404897db747b644b5cc,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4301552
+      value: 0.9496315
       objectReference: {fileID: 0}
     - target: {fileID: 1882801807420953825, guid: 4bcdbc64d1562404897db747b644b5cc,
         type: 3}
@@ -1084,12 +1084,12 @@ PrefabInstance:
     - target: {fileID: 1882801807420953825, guid: 4bcdbc64d1562404897db747b644b5cc,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.077764
+      value: 1.2786853
       objectReference: {fileID: 0}
     - target: {fileID: 1882801807420953825, guid: 4bcdbc64d1562404897db747b644b5cc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0013
+      value: 0.0144
       objectReference: {fileID: 0}
     - target: {fileID: 1882801807420953825, guid: 4bcdbc64d1562404897db747b644b5cc,
         type: 3}
@@ -1099,7 +1099,7 @@ PrefabInstance:
     - target: {fileID: 1882801807420953825, guid: 4bcdbc64d1562404897db747b644b5cc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.009
+      value: -0.0515
       objectReference: {fileID: 0}
     - target: {fileID: 1882801807420953825, guid: 4bcdbc64d1562404897db747b644b5cc,
         type: 3}
@@ -4151,6 +4151,7 @@ MonoBehaviour:
   playerTwoShieldStatus: 0
   playerFound: 0
   opponentFound: {fileID: 1766511996}
+  shieldMesh: {fileID: 958632412}
 --- !u!114 &690235662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5512,7 +5513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldHP: {fileID: 536908335}
   shieldManagerTimerStatus: {fileID: 1237552528}
-  shieldManagerPlayerTwoShieldStatus: {fileID: 690235661}
+  shieldManagerPlayerTwoShield: {fileID: 690235661}
   shieldSound: {fileID: 438103559}
   shieldCooldown: {fileID: 18953887}
   shieldMesh: {fileID: 958632412}

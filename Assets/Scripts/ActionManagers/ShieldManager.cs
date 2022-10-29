@@ -36,6 +36,8 @@ public class ShieldManager : MonoBehaviour
     public bool playerFound = false;
     [SerializeField]
     private TMP_Text opponentFound;
+    [SerializeField]
+    private MeshRenderer shieldMesh; //Shield
 
     protected virtual void Start()
     {
@@ -156,21 +158,7 @@ public class ShieldManager : MonoBehaviour
         opponentFound.text = "Opponent Detected!";
         if (mObserverBehaviour && playerTwoShieldStatus)
         {
-            var rendererComponents = mObserverBehaviour.GetComponentsInChildren<Renderer>(true);
-            var colliderComponents = mObserverBehaviour.GetComponentsInChildren<Collider>(true);
-            var canvasComponents = mObserverBehaviour.GetComponentsInChildren<Canvas>(true);
-
-            // Enable rendering:
-            foreach (var component in rendererComponents)
-                component.enabled = true;
-
-            // // Enable colliders:
-            // foreach (var component in colliderComponents)
-            //     component.enabled = true;
-
-            // Enable canvas':
-            foreach (var component in canvasComponents)
-                component.enabled = true;
+            shieldMesh.enabled = true;
         }
 
     }
@@ -181,21 +169,7 @@ public class ShieldManager : MonoBehaviour
         opponentFound.text = "";
         if (mObserverBehaviour)
         {
-            var rendererComponents = mObserverBehaviour.GetComponentsInChildren<Renderer>(true);
-            var colliderComponents = mObserverBehaviour.GetComponentsInChildren<Collider>(true);
-            var canvasComponents = mObserverBehaviour.GetComponentsInChildren<Canvas>(true);
-
-            // Disable rendering:
-            foreach (var component in rendererComponents)
-                component.enabled = false;
-
-            // Disable colliders:
-            foreach (var component in colliderComponents)
-                component.enabled = false;
-
-            // Disable canvas':
-            foreach (var component in canvasComponents)
-                component.enabled = false;
+            shieldMesh.enabled = false;
         }
     }
 

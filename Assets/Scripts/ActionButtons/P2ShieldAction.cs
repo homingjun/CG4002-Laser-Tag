@@ -11,7 +11,7 @@ public class P2ShieldAction : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI shieldManagerTimerStatus; //Text Shield Timer Opponent
     [SerializeField]
-    private ShieldManager shieldManagerPlayerTwoShieldStatus; //ImageTarget
+    private ShieldManager shieldManagerPlayerTwoShield; //ImageTarget
     [SerializeField]
     private AudioManager shieldSound; //Canvas
     [SerializeField]
@@ -30,12 +30,14 @@ public class P2ShieldAction : MonoBehaviour
     */
     public void UseShield(JObject json)
     {
-        if (Convert.ToInt32(json["p2"]["num_shield"]) >= 0)
+        if (Convert.ToInt32(json["p1"]["num_shield"]) >= 0)
         {
             shieldSound.PlayShieldSound();
-            shieldManagerPlayerTwoShieldStatus.playerTwoShieldStatus = true;
+            shieldManagerPlayerTwoShield.playerTwoShieldStatus = true;
             shieldManagerTimerStatus.enabled = true;
-            shieldMesh.enabled = true;
+            if (shieldManagerPlayerTwoShield.playerFound) {
+                shieldMesh.enabled = true;
+            }
         }
     }
 
@@ -50,7 +52,7 @@ public class P2ShieldAction : MonoBehaviour
         shieldCooldown.fillAmount = 0.0f;
 
         shieldManagerTimerStatus.enabled = false;
-        shieldManagerPlayerTwoShieldStatus.playerTwoShieldStatus = false;
+        shieldManagerPlayerTwoShield.playerTwoShieldStatus = false;
         shieldMesh.enabled = false;
     }
 }
