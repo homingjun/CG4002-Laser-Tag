@@ -3058,7 +3058,7 @@ MonoBehaviour:
   autoConnect: 1
   mqttUserName: 
   mqttPassword: 
-  topicSubscribe: visualizer18
+  topicSubscribe: visualizer17
   topicPublish: 
   messagePublish: 
   autoTest: 0
