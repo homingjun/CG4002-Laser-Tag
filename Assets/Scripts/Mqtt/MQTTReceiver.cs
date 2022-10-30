@@ -101,6 +101,11 @@ public class MQTTReceiver : M2MqttUnityClient
 
         textConnected.text = "Connection Failed!";
         textConnected.color = new Color32(255, 0, 0, 255);
+
+        if (autoConnect)
+            {
+                Connect();
+            }
     }
 
     protected override void OnDisconnected()
@@ -110,6 +115,11 @@ public class MQTTReceiver : M2MqttUnityClient
 
         textConnected.text = "Disconnected!";
         textConnected.color = new Color32(255, 0, 0, 255);
+
+        if (autoConnect)
+            {
+                Connect();
+            }
     }
 
     protected override void OnConnectionLost()
@@ -118,6 +128,11 @@ public class MQTTReceiver : M2MqttUnityClient
 
         textConnected.text = "Connection Lost!";
         textConnected.color = new Color32(255, 0, 0, 255);
+
+        if (autoConnect)
+            {
+                Connect();
+            }
     }
 
     protected override void SubscribeTopics()
