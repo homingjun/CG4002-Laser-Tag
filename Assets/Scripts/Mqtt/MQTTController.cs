@@ -51,8 +51,6 @@ public class MQTTController : MonoBehaviour
     private void OnMessageArrivedHandler(string newMsg)
     {
         currentJson = JObject.Parse(newMsg);
-        Debug.Log("First:" + previousTextWarning);
-        Debug.Log(previousTextWarning.Contains("dc"));
 
         if (currentJson.ToString().Contains("action") && !previousTextWarning.Contains("dc")) {
             action1 = currentJson["p1"]["action"].ToString();
@@ -208,7 +206,6 @@ public class MQTTController : MonoBehaviour
             if (imuStatus2 == "no" || gunStatus2 == "no" || vestStatus2 == "no") {
                 textWarning.textWarningOpp.text = "Opponent has a disconnection!";
                 previousTextWarning = "dc";
-                Debug.Log(previousTextWarning);
                 sound.PlayOpponentDisconnectedSound();
             }
             else if (imuStatus1 != "no" && gunStatus1 != "no" && vestStatus1 != "no"){
