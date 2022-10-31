@@ -67,8 +67,8 @@ public class Quit : MonoBehaviour
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #else
-        //Application.Quit();
-        System.Diagnostics.Process.GetCurrentProcess().Kill();
+        Application.Quit();
+        //System.Diagnostics.Process.GetCurrentProcess().Kill();
         #endif
     }
 }
