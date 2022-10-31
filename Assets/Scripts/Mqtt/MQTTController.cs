@@ -196,7 +196,7 @@ public class MQTTController : MonoBehaviour
             else if (vestStatus1 == "no") {
                 textWarning.textWarning.text = "Vest Disconnected!";
                 previousTextWarning = "dc";
-                sound.PlayImuDisconnectedSound();
+                sound.PlayVestDisconnectedSound();
             }
             else if (imuStatus2 != "no" && gunStatus2 != "no" && vestStatus2 != "no") {
                 textWarning.textWarning.text = "";
