@@ -27,8 +27,6 @@ public class P1UIManager : MonoBehaviour
     [SerializeField]
     private Image shieldCooldown; //Shield Fill
     [SerializeField]
-    public TMP_Text textInfo;
-    [SerializeField]
     public TMP_Text textCurrentAction;
     [SerializeField]
     public TMP_Text textPreviousAction;
@@ -36,6 +34,10 @@ public class P1UIManager : MonoBehaviour
     public TMP_Text textWarning;
     [SerializeField]
     public TMP_Text textWarningOpp;
+    [SerializeField]
+    private GameObject damageEffect;
+    [SerializeField]
+    private Transform cam;
     private bool timerStatus = false;
     private float cooldownTime = 10f;
     private float cooldownTimer = 0.0f;
@@ -56,12 +58,26 @@ public class P1UIManager : MonoBehaviour
     }
 
     public void UpdateUI(JObject json)
-    {   
-        if (json["p2"]["action"].ToString() != "none") {
+    {
+        if (json["p2"]["action"].ToString() != "none")
+        {
             textCurrentAction.text = "Current Action: " + json["p2"]["action"].ToString();
         }
-        if (mqttController.previousJson["p2"]["action"].ToString() != "none") {
+        if (mqttController.previousJson["p2"]["action"].ToString() != "none")
+        {
             textPreviousAction.text = "Previous Action: " + mqttController.previousJson["p2"]["action"].ToString();
+        }
+
+        Vector3 temp = cam.position;
+        if (Convert.ToInt32(json["p2"]["hp"]) < Convert.ToInt32(mqttController.previousJson["p2"]["hp"]) && (json["p1"]["action"].ToString() == "shoot" || json["p1"]["action"].ToString() == "grenade"))
+        {
+            Instantiate(damageEffect, temp, cam.rotation);
+        }
+
+        temp.z = 5;
+        if (Convert.ToInt32(json["p1"]["hp"]) < Convert.ToInt32(mqttController.previousJson["p1"]["hp"]) && (json["p2"]["action"].ToString() == "shoot" || json["p2"]["action"].ToString() == "grenade"))
+        {
+            Instantiate(damageEffect, temp, cam.rotation);
         }
 
         //Set previousJson to the current json
