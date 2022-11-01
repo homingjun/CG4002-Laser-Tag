@@ -16,6 +16,8 @@ public class GameOverUIManager : MonoBehaviour
     private Image background;
     [SerializeField]
     private Button buttonQuit;
+    [SerializeField]
+    private AudioManager sound;
 
     void Start()
     {
@@ -42,10 +44,12 @@ public class GameOverUIManager : MonoBehaviour
         else if (Convert.ToInt32(json["p1"]["num_deaths"]) < Convert.ToInt32(json["p2"]["num_deaths"]))
         {
             textWinner.text = "Player 1 Wins!";
+            sound.PlayPlayerOneWinSound();
         }
         else
         {
             textWinner.text = "Player 2 Wins!";
+            sound.PlayPlayerTwoWinSound();
         }
     }
 }

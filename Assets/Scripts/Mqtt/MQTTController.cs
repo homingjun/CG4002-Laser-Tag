@@ -142,9 +142,6 @@ public class MQTTController : MonoBehaviour
                 case "reload":
                     reload.ReloadPlayerTwo();
                     break;
-                case "logout":
-                    winner.GameWinner(currentJson);
-                    break;
                 default:
                     break;
             }

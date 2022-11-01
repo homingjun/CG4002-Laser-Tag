@@ -40,6 +40,10 @@ public class AudioManager : MonoBehaviour
     private AudioSource gvDcSound; //GUN AND VEST
     [SerializeField]
     private AudioSource oppDcSound; //Opponent
+    [SerializeField]
+    private AudioSource p1WinSound; //p1 win sound
+    [SerializeField]
+    private AudioSource p2WinSound; //p2 win sound
 
     public void PlayBulletSound()
     {
@@ -138,5 +142,13 @@ public class AudioManager : MonoBehaviour
     public void PlayOpponentDisconnectedSound()
     {
         oppDcSound.Play();
+    }
+
+    public void PlayPlayerOneWinSound() {
+        p1WinSound.Play();
+    }
+
+    public void PlayPlayerTwoWinSound() {
+        p2WinSound.Play();
     }
 }
