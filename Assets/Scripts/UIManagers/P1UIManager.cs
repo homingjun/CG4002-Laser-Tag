@@ -73,13 +73,11 @@ public class P1UIManager : MonoBehaviour
             if (Convert.ToInt32(json["p1"]["hp"]) < 100 && selfInitialHP && (json["p2"]["action"].ToString() == "shoot" || json["p2"]["action"].ToString() == "grenade")) {
                 Instantiate(damageEffect, temp, cam.rotation);
                 selfInitialHP = false;
-                Debug.Log(selfInitialHP);
             }
              temp.z = 5;
-            if (Convert.ToInt32(json["p2"]["hp"]) < 100 && selfInitialHP && (json["p1"]["action"].ToString() == "shoot" || json["p1"]["action"].ToString() == "grenade")) {
+            if (Convert.ToInt32(json["p2"]["hp"]) < 100 && opponentInitialHP && (json["p1"]["action"].ToString() == "shoot" || json["p1"]["action"].ToString() == "grenade")) {
                 Instantiate(damageEffect, temp, cam.rotation);
                 opponentInitialHP = false;
-                Debug.Log(opponentInitialHP);
             }
         }
         if (mqttController.previousJson != null) {
