@@ -38,10 +38,11 @@ public class P1UIManager : MonoBehaviour
     private GameObject damageEffect;
     [SerializeField]
     private Transform cam;
-
     private bool timerStatus = false;
     private float cooldownTime = 10f;
     private float cooldownTimer = 0.0f;
+    private bool selfInitialHP;
+    private bool opponentInitialHP;
     [SerializeField]
     private P1ShieldAction p1Shield;
     [SerializeField]
@@ -56,31 +57,45 @@ public class P1UIManager : MonoBehaviour
         textPreviousAction.text = "Previous Action: ";
         textWarning.text = "";
         textWarningOpp.text = "";
+        selfInitialHP = true;
+        opponentInitialHP = true;
     }
 
     public void UpdateUI(JObject json)
     {
-        if (json["p1"]["action"].ToString() != "none")
-        {
+        if (!json["p1"]["action"].ToString().Contains("none"))
+        {   
+            textPreviousAction.text = "Previous Action:" + textCurrentAction.text.Split(":")[1];
             textCurrentAction.text = "Current Action: " + json["p1"]["action"].ToString();
         }
-        if (mqttController.previousJson["p1"]["action"].ToString() != "none")
-        {
-            textPreviousAction.text = "Previous Action: " + mqttController.previousJson["p1"]["action"].ToString();
+        if (mqttController.previousJson == null) {
+            Vector3 temp = cam.position;
+            if (Convert.ToInt32(json["p1"]["hp"]) < 100 && selfInitialHP && (json["p2"]["action"].ToString() == "shoot" || json["p2"]["action"].ToString() == "grenade")) {
+                Instantiate(damageEffect, temp, cam.rotation);
+                selfInitialHP = false;
+                Debug.Log(selfInitialHP);
+            }
+             temp.z = 5;
+            if (Convert.ToInt32(json["p2"]["hp"]) < 100 && selfInitialHP && (json["p1"]["action"].ToString() == "shoot" || json["p1"]["action"].ToString() == "grenade")) {
+                Instantiate(damageEffect, temp, cam.rotation);
+                opponentInitialHP = false;
+                Debug.Log(opponentInitialHP);
+            }
         }
+        if (mqttController.previousJson != null) {
+            Vector3 temp = cam.position;
+            if (Convert.ToInt32(json["p1"]["hp"]) < Convert.ToInt32(mqttController.previousJson["p1"]["hp"]) && (json["p2"]["action"].ToString() == "shoot" || json["p2"]["action"].ToString() == "grenade"))
+            {
+                Instantiate(damageEffect, temp, cam.rotation);
+            }
 
-        Vector3 temp = cam.position;
-        if (Convert.ToInt32(json["p1"]["hp"]) < Convert.ToInt32(mqttController.previousJson["p1"]["hp"]) && (json["p2"]["action"].ToString() == "shoot" || json["p2"]["action"].ToString() == "grenade"))
-        {
-            Instantiate(damageEffect, temp, cam.rotation);
+            temp.z = 5;
+            if (Convert.ToInt32(json["p2"]["hp"]) < Convert.ToInt32(mqttController.previousJson["p2"]["hp"]) && (json["p1"]["action"].ToString() == "shoot" || json["p1"]["action"].ToString() == "grenade"))
+            {
+                Instantiate(damageEffect, temp, cam.rotation);
+            }
         }
-
-        temp.z = 5;
-        if (Convert.ToInt32(json["p2"]["hp"]) < Convert.ToInt32(mqttController.previousJson["p2"]["hp"]) && (json["p1"]["action"].ToString() == "shoot" || json["p1"]["action"].ToString() == "grenade"))
-        {
-            Instantiate(damageEffect, temp, cam.rotation);
-        }
-
+        
         //Set previousJson to the current json
         mqttController.previousJson = json;
 
