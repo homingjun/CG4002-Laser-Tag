@@ -52,7 +52,7 @@ public class MQTTController : MonoBehaviour
     {
         currentJson = JObject.Parse(newMsg);
 
-        if (currentJson.ToString().Contains("action") && !previousTextWarning.Contains("dc"))
+        if (currentJson.ToString().Contains("action"))
         {
             action1 = currentJson["p2"]["action"].ToString();
             action2 = currentJson["p1"]["action"].ToString();
