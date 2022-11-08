@@ -57,12 +57,6 @@ public class MQTTController : MonoBehaviour
             action1 = currentJson["p2"]["action"].ToString();
             action2 = currentJson["p1"]["action"].ToString();
 
-            //Set previousJson to the currentJson (for the first iteration,) when it is null.
-            if (previousJson == null)
-            {
-                previousJson = currentJson;
-            }
-
             p1UI.UpdateUI(currentJson);
             p2UI.UpdateUI(currentJson);
 
@@ -127,7 +121,7 @@ public class MQTTController : MonoBehaviour
                     break;
                 case "logout":
                     winner.GameWinner(currentJson);
-                    break;
+                    return;
                 default:
                     break;
             }

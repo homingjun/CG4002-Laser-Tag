@@ -40,6 +40,7 @@ public class GameOverUIManager : MonoBehaviour
         if (Convert.ToInt32(json["p1"]["num_deaths"]) == Convert.ToInt32(json["p2"]["num_deaths"]))
         {
             textWinner.text = "Game Draw!";
+            sound.PlayDrawSound();
         }
         else if (Convert.ToInt32(json["p1"]["num_deaths"]) < Convert.ToInt32(json["p2"]["num_deaths"]))
         {

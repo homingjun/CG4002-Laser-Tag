@@ -42,6 +42,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioSource oppDcSound; //Opponent
     [SerializeField]
+    private AudioSource drawSound; //Draw sound
+    [SerializeField]
     private AudioSource p1WinSound; //p1 win sound
     [SerializeField]
     private AudioSource p2WinSound; //p2 win sound
@@ -143,6 +145,10 @@ public class AudioManager : MonoBehaviour
     public void PlayOpponentDisconnectedSound()
     {
         oppDcSound.Play();
+    }
+
+    public void PlayDrawSound() {
+        drawSound.Play();
     }
 
     public void PlayPlayerOneWinsSound() {
